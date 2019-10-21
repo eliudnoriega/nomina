@@ -6,6 +6,13 @@
 -- Tiempo de generación: 09-11-2017 a las 16:17:58
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
+use mysql;
+update user set password='root' where User='root';
+flush privileges;
+
+CREATE DATABASE nomina;
+
+use nomina;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
