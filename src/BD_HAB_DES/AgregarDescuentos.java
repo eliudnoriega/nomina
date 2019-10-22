@@ -6,10 +6,9 @@
 
 package BD_HAB_DES;
 
-import BD_Establecimiento.*;
 import About.*;
 import Control_BD.Control_Descuentos;
-import Control_BD.Control_Establecimiento;
+import Control_BD.Control_Departamento;
 import Control_BD.Control_Haberes;
 import java.awt.Color;
 import java.awt.Desktop;

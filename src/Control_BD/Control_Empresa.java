@@ -6,15 +6,19 @@
 package Control_BD;
 
 import Empresa.ModificarEmpresa;
-import BD_Establecimiento.ModificarEstablecimiento;
+import BD_Departamento.ModificarDepartamento;
 import BD_HAB_DES.Agregar_hab_des;
 import BD_Reportes.ConsultarReporte;
+import Util.Combo;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,7 +30,7 @@ public class Control_Empresa {
 
     DefaultTableModel modelo;
     //vector con los titulos de cada columna
-    String[] titulosColumnas = {"id","nombre"};
+    String[] titulosColumnas = {"id", "nombre"};
     //matriz donde se almacena los datos de cada celda de la tabla
     String info[][] = {};
     // Conectar Base de Datos
@@ -147,7 +151,7 @@ public class Control_Empresa {
         };
         //le asigna el modelo al jtable
 
-        ModificarEstablecimiento.jTableListarEstablecimiento.setModel(modelo);
+        ModificarDepartamento.jTableListarDepartamento.setModel(modelo);
 
         //ejecuta una consulta a la BD
         ejecutarConsultaTodaTablaEmpresa();
@@ -185,7 +189,6 @@ public class Control_Empresa {
 
             }
 
-    
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error SQL:\n" + e);
         } catch (Exception e) {
@@ -355,6 +358,44 @@ public class Control_Empresa {
             } catch (SQLException ex) {
                 System.out.println("Error: " + ex.getMessage());
             }
+        }
+    }
+
+    public List<Combo> obtenetListadoEmpresa() {
+        List<Combo> resp = new ArrayList();
+        conexion = ConexionConBaseDatos.getConexion();
+        try {
+            // creamos la Conexion
+            sentencia = conexion.createStatement();
+            /*instanciamos el objeto callable donde mandamos a pedir la cantidad
+                                 *  parametros en este caso MostrarCampo no tiene
+                                 *  y se coloca como se muestra*/
+            ResultSet rs = sentencia.executeQuery("select * from `empresa`");
+
+            while (rs.next()) {
+
+                String CODIGO = rs.getString("id");
+                String NOMBRE = rs.getString("nombre");
+
+//                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla=
+//                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla;
+                //crea un vector donde los está la informacion (se crea una fila)
+                Object[] info = {CODIGO, NOMBRE};
+
+                //al modelo de la tabla le agrega una fila
+                //con los datos que están en info
+                resp.add(new Combo(CODIGO, NOMBRE));
+
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error SQL:\n" + e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            conexion = null;
+        } finally {
+            CerrarConexiones.metodoCerrarConexiones(conexion, sentencia, resultado, ps);
+            return resp;
         }
     }
 

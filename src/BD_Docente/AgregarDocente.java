@@ -8,7 +8,7 @@ package BD_Docente;
 
 import About.*;
 import Control_BD.Control_Docente;
-import Control_BD.Control_Establecimiento;
+import Control_BD.Control_Departamento;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -25,8 +25,8 @@ public class AgregarDocente extends javax.swing.JDialog {
 private void llamarEstablecimiento() {
 
         // llamada de datos
-        Control_BD.Control_Establecimiento load = new Control_Establecimiento();
-        load.CargarEstablecimientoDocente();
+        Control_BD.Control_Departamento load = new Control_Departamento();
+        load.CargarDepartamentoDocente();
         //Centramos nuestro jDialog
         jDialogEstablecimiento.setLocation(200, 100);
         //La hacemos modal
@@ -433,9 +433,9 @@ System.out.println(idesta);
 
     private void jTextFieldParametroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaKeyPressed
         // TODO add your handling code here:
-        Control_Establecimiento cc = new Control_Establecimiento();
+        Control_Departamento cc = new Control_Departamento();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
-        cc.buscarEstablecimientoParaAgregarDocente(parametroBusqueda);
+        cc.buscarDepartamentoParaAgregarDocente(parametroBusqueda);
         int[] anchos = {200, 200, 300, 100};
         for (int i = 0; i < AgregarDocente.SeleccionarEstablecimiento.getColumnCount(); i++) {
             AgregarDocente.SeleccionarEstablecimiento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}

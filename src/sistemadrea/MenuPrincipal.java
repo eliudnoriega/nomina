@@ -8,8 +8,8 @@ package sistemadrea;
 import About.About;
 import BD_Docente.AgregarDocente;
 import BD_Docente.ModificarDocente;
-import BD_Establecimiento.AgregarEstablecimiento;
-import BD_Establecimiento.ModificarEstablecimiento;
+import BD_Departamento.AgregarDepartamento;
+import BD_Departamento.ModificarDepartamento;
 import BD_HAB_DES.AgregarDescuentos;
 import BD_HAB_DES.AgregarHaberes;
 import BD_HAB_DES.Agregar_hab_des;
@@ -119,7 +119,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu_basedatos.setText("Base de Datos");
 
         jMenu_establecimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/school.png"))); // NOI18N
-        jMenu_establecimiento.setText("Establecimientos");
+        jMenu_establecimiento.setText("Departamentos");
         jMenu_establecimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jMenuItem_add_estab.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -134,7 +134,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuItem_mod_esta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem_mod_esta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Folder Black User.png"))); // NOI18N
-        jMenuItem_mod_esta.setText("Modificar Establecimiento");
+        jMenuItem_mod_esta.setText("Modificar Departamento");
         jMenuItem_mod_esta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_mod_estaActionPerformed(evt);
@@ -322,7 +322,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem_add_estabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_estabActionPerformed
         // TODO add your handling code here:
-        new AgregarEstablecimiento(this, true).setVisible(true);
+        new AgregarDepartamento(this, true).setVisible(true);
 
     }//GEN-LAST:event_jMenuItem_add_estabActionPerformed
 
@@ -332,7 +332,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem_mod_estaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_mod_estaActionPerformed
         //new ListarCliente(this, true).setVisible(true);
-        new ModificarEstablecimiento(this, true).setVisible(true);
+        new ModificarDepartamento(this, true).setVisible(true);
         //  ModificarEstablecimiento.main(null); 
     }//GEN-LAST:event_jMenuItem_mod_estaActionPerformed
 

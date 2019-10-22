@@ -6,7 +6,7 @@
 package Control_BD;
 
 import BD_Docente.ModificarDocente;
-import BD_Establecimiento.ModificarEstablecimiento;
+import BD_Departamento.ModificarDepartamento;
 import BD_Reportes.ConsultarReporte;
 
 import java.sql.CallableStatement;
@@ -75,7 +75,7 @@ public class Control_Reportes {
             ReportePorDocente(parametroBusqueda);
 
     }
-     public void buscarReportePorEstablecimientoPlanilla(String parametroBusqueda) {
+     public void buscarReportePorDepartamentoPlanilla(String parametroBusqueda) {
 
         
 
@@ -87,10 +87,10 @@ public class Control_Reportes {
 
             ;
             //le asigna el modelo al jtable
-            ModificarEstablecimiento.jtablereporte_porestablec.setModel(modelo);
+            ModificarDepartamento.jtablereporte_pordepartamento.setModel(modelo);
             //ejecuta una consulta a la BD
 
-            ReportePorEstablecimiento(parametroBusqueda);
+            ReportePorDepartamento(parametroBusqueda);
 
     }
              Connection conexion = null;
@@ -260,7 +260,7 @@ public class Control_Reportes {
  
     
     
-        public void ReportePorEstablecimiento(String parametroBusqueda) {
+        public void ReportePorDepartamento(String parametroBusqueda) {
 
                    conexion = ConexionConBaseDatos.getConexion();
                        ResultSet rs; 
@@ -270,7 +270,7 @@ public class Control_Reportes {
             // Llamada al procedimiento almacenado
        
                                  conexion.setAutoCommit(false);
-            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call reporte_buscar_por_establecimiento(?)}");
+            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call reporte_buscar_por_departamento(?)}");
                 // Parametro 1 del procedimiento almacenado
             prcProcedimientoAlmacenado.setString(1,parametroBusqueda);
              
@@ -287,9 +287,9 @@ public class Control_Reportes {
                 String HABERES = rs.getString("HABERES");
                 String DESCUENTOS = rs.getString("DESCUENTOS");
                 String M_TOTAL = rs.getString("M_TOTAL");
-                String ESTABLECIMIENTO = rs.getString("ESTABLECIMIENTO");
+                String DEPARTAMENTO = rs.getString("DEPARTAMENTO");
                 
-                Object[] info = {FECHA, DNI_DOCENTE, NOMBRE, AP_PATERNO,AP_MATERNO,HABERES,DESCUENTOS,M_TOTAL,ESTABLECIMIENTO};
+                Object[] info = {FECHA, DNI_DOCENTE, NOMBRE, AP_PATERNO,AP_MATERNO,HABERES,DESCUENTOS,M_TOTAL,DEPARTAMENTO};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
@@ -353,8 +353,8 @@ public class Control_Reportes {
                 String HABERES = rs.getString("HABERES");
                 String DESCUENTOS = rs.getString("DESCUENTOS");
                 String M_TOTAL = rs.getString("M_TOTAL");
-                String ESTABLECIMIENTO = rs.getString("ESTABLECIMIENTO");
-                Object[] info = {FECHA, DNI_DOCENTE, NOMBRE, AP_PATERNO,AP_MATERNO,HABERES,DESCUENTOS,M_TOTAL,ESTABLECIMIENTO};
+                String DEPARTAMENTO = rs.getString("DEPARTAMENTO");
+                Object[] info = {FECHA, DNI_DOCENTE, NOMBRE, AP_PATERNO,AP_MATERNO,HABERES,DESCUENTOS,M_TOTAL,DEPARTAMENTO};
                 modelo.addRow(info); //al modelo de la tabla le agrega una fila
                            }
                                 conexion.commit();

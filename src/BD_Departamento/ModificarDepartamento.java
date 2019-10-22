@@ -1,7 +1,6 @@
+package BD_Departamento;
 
-package BD_Establecimiento;
-
-import Control_BD.Control_Establecimiento;
+import Control_BD.Control_Departamento;
 import BD_Docente.*;
 import Control_BD.*;
 import java.awt.Desktop;
@@ -19,37 +18,42 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-
 /**
  *
  * @author Sergio
  */
-public class ModificarEstablecimiento extends javax.swing.JDialog {
-String idestablecimiento="";
+public class ModificarDepartamento extends javax.swing.JDialog {
+
+    String iddepartamento = "";
+
     /**
      * Creates new form ListarCliente
      */
 
-                void  ocultar_columnas_establecimiento() {
-       jTableListarEstablecimiento.getColumnModel().getColumn(0).setMaxWidth(0);
-        jTableListarEstablecimiento.getColumnModel().getColumn(0).setMinWidth(0);
+    void ocultar_columnas_departamento() {
+        jTableListarDepartamento.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTableListarDepartamento.getColumnModel().getColumn(0).setMinWidth(0);
+        jTableListarDepartamento.getColumnModel().getColumn(3).setMaxWidth(0);
+        jTableListarDepartamento.getColumnModel().getColumn(3).setMinWidth(0);
 
-            
     }
-               void  tam_columnas_establecimiento() {
-                          int[] anchos = {0,200, 200, 200};
-        for (int i = 0; i < jTableListarEstablecimiento.getColumnCount(); i++) {
-            jTableListarEstablecimiento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
-            
+
+    void tam_columnas_departamento() {
+        int[] anchos = {0, 200, 200,0 , 200};
+        for (int i = 0; i < jTableListarDepartamento.getColumnCount(); i++) {
+            jTableListarDepartamento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+
     }
-    public ModificarEstablecimiento(java.awt.Frame parent, boolean modal) {
+
+    public ModificarDepartamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-      Control_BD.Control_Establecimiento load = new Control_Establecimiento();
-        load.CargarDocenteconsultaReporteEstablecimiento();
-        ocultar_columnas_establecimiento();
-        tam_columnas_establecimiento(); 
+        Control_BD.Control_Departamento load = new Control_Departamento();
+        load.CargarDocenteconsultaReporteDepartamento();
+        ocultar_columnas_departamento();
+        tam_columnas_departamento();
     }
 
     /**
@@ -64,28 +68,28 @@ String idestablecimiento="";
         jDialogPlanilla = new javax.swing.JDialog();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jtablereporte_porestablec = new javax.swing.JTable();
+        jtablereporte_pordepartamento = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableListarEstablecimiento = new javax.swing.JTable();
+        jTableListarDepartamento = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jTextFieldParametroBusqueda = new javax.swing.JTextField();
         jLabel_i = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldCodigoEstablecimiento = new javax.swing.JTextField();
-        jTextFieldNombreEstableciento = new javax.swing.JTextField();
+        jTextFieldCodigoDepartamento = new javax.swing.JTextField();
+        jTextFieldNombreDepartamento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldSedeUgel = new javax.swing.JTextField();
         jButton_modificar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel_IDestablecimiento = new javax.swing.JLabel();
+        jLabel_IDdepartamento = new javax.swing.JLabel();
         jButton_imprimir = new javax.swing.JButton();
 
         jDialogPlanilla.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,9 +101,9 @@ String idestablecimiento="";
 
         jScrollPane3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jtablereporte_porestablec.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jtablereporte_porestablec.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane3.setViewportView(jtablereporte_porestablec);
+        jtablereporte_pordepartamento.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jtablereporte_pordepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane3.setViewportView(jtablereporte_pordepartamento);
 
         jDialogPlanilla.getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 610, 230));
 
@@ -116,7 +120,6 @@ String idestablecimiento="";
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modificar Establecimiento");
-        setPreferredSize(new java.awt.Dimension(1103, 350));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,13 +127,13 @@ String idestablecimiento="";
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Selecione Establecimiento");
+        jLabel1.setText("Selecione Departamento");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 570, 50));
 
-        jTableListarEstablecimiento.setBackground(new java.awt.Color(0, 102, 153));
-        jTableListarEstablecimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTableListarEstablecimiento.setForeground(new java.awt.Color(255, 255, 255));
-        jTableListarEstablecimiento.setModel(new javax.swing.table.DefaultTableModel(
+        jTableListarDepartamento.setBackground(new java.awt.Color(0, 102, 153));
+        jTableListarDepartamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTableListarDepartamento.setForeground(new java.awt.Color(255, 255, 255));
+        jTableListarDepartamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -141,13 +144,13 @@ String idestablecimiento="";
 
             }
         ));
-        jTableListarEstablecimiento.setGridColor(new java.awt.Color(255, 0, 0));
-        jTableListarEstablecimiento.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableListarDepartamento.setGridColor(new java.awt.Color(255, 0, 0));
+        jTableListarDepartamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableListarEstablecimientoMouseClicked(evt);
+                jTableListarDepartamentoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTableListarEstablecimiento);
+        jScrollPane1.setViewportView(jTableListarDepartamento);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 620, 170));
 
@@ -162,6 +165,11 @@ String idestablecimiento="";
 
         jTextFieldParametroBusqueda.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextFieldParametroBusqueda.setForeground(new java.awt.Color(0, 0, 204));
+        jTextFieldParametroBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldParametroBusquedaActionPerformed(evt);
+            }
+        });
         jTextFieldParametroBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldParametroBusquedaKeyPressed(evt);
@@ -176,29 +184,31 @@ String idestablecimiento="";
 
         jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Codigo  establecimiento");
+        jLabel6.setText("Codigo  Departamento");
 
-        jTextFieldCodigoEstablecimiento.setBackground(new java.awt.Color(0, 102, 153));
-        jTextFieldCodigoEstablecimiento.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jTextFieldCodigoEstablecimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldCodigoDepartamento.setBackground(new java.awt.Color(0, 102, 153));
+        jTextFieldCodigoDepartamento.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jTextFieldCodigoDepartamento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldCodigoEstablecimientoKeyTyped(evt);
+                jTextFieldCodigoDepartamentoKeyTyped(evt);
             }
         });
 
-        jTextFieldNombreEstableciento.setBackground(new java.awt.Color(0, 102, 153));
-        jTextFieldNombreEstableciento.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jTextFieldNombreDepartamento.setBackground(new java.awt.Color(0, 102, 153));
+        jTextFieldNombreDepartamento.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Establecimeinto");
+        jLabel7.setText("Departamento");
 
         jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Sede Ugel");
+        jLabel8.setText("Empresa");
 
+        jTextFieldSedeUgel.setEditable(false);
         jTextFieldSedeUgel.setBackground(new java.awt.Color(0, 102, 153));
         jTextFieldSedeUgel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jTextFieldSedeUgel.setOpaque(false);
         jTextFieldSedeUgel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldSedeUgelKeyTyped(evt);
@@ -226,7 +236,7 @@ String idestablecimiento="";
 
         jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("IdEstablecimiento");
+        jLabel9.setText("IdDepto");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -237,7 +247,7 @@ String idestablecimiento="";
                 .addComponent(jButton2)
                 .addGap(67, 67, 67)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_IDestablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_modificar))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -250,9 +260,9 @@ String idestablecimiento="";
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombreEstableciento)
+                            .addComponent(jTextFieldNombreDepartamento)
                             .addComponent(jTextFieldSedeUgel)
-                            .addComponent(jTextFieldCodigoEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel9))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
@@ -262,11 +272,11 @@ String idestablecimiento="";
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextFieldCodigoEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldNombreEstableciento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNombreDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -274,7 +284,7 @@ String idestablecimiento="";
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel_IDestablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_modificar)
@@ -309,30 +319,30 @@ String idestablecimiento="";
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- private void llamarplanilla(){
-     
-     
+ private void llamarplanilla() {
+
         // llamada de datos
-                Control_Reportes cc = new Control_Reportes();
- System.out.println("recibiendo "+idestablecimiento);
-        cc.buscarReportePorEstablecimientoPlanilla(idestablecimiento);
-        int[] anchos = {100, 100, 100, 100, 100, 100,100, 100, 100};
-        for (int i = 0; i < ModificarEstablecimiento.jtablereporte_porestablec.getColumnCount(); i++) {
-            ModificarEstablecimiento.jtablereporte_porestablec.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+        Control_Reportes cc = new Control_Reportes();
+        System.out.println("recibiendo " + iddepartamento);
+        cc.buscarReportePorDepartamentoPlanilla(iddepartamento);
+        int[] anchos = {100, 100, 100, 100, 100, 100, 100, 100, 100};
+        for (int i = 0; i < ModificarDepartamento.jtablereporte_pordepartamento.getColumnCount(); i++) {
+            ModificarDepartamento.jtablereporte_pordepartamento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
         //Centramos nuestro jDialog
         jDialogPlanilla.setLocation(200, 100);
         //La hacemos modal
         jDialogPlanilla.setModal(true);
         //Establecemos dimensiones.
         jDialogPlanilla.setMinimumSize(new Dimension(747, 385));
-       jButton7.setText("Imprimir");
-       jLabel16.setText("Reporte planilla");
+        jButton7.setText("Imprimir");
+        jLabel16.setText("Reporte planilla");
         //Establecemos un  para el jDialog
         jDialogPlanilla.setTitle("Reporte.");
         //La hacemos visible.
         jDialogPlanilla.setVisible(true);
- 
- }
+
+    }
     private void jButton_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_imprimirActionPerformed
         // TODO add your handling code here:
         // sale mensaje y decir que reporte es
@@ -340,115 +350,111 @@ String idestablecimiento="";
         // IMPRIMIR POR IMPRESORA
         try {
             //Mensaje de encabezado
-            MessageFormat  headerFormat = new MessageFormat("Reportes de "+reporte);
+            MessageFormat headerFormat = new MessageFormat("Reportes de " + reporte);
             //Mensaje en el pie de pagina
             MessageFormat footerFormat = new MessageFormat("Lista de docentes");
             //Imprimir JTable
-            jTableListarEstablecimiento.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+            jTableListarDepartamento.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch (PrinterException ex) {
-            Logger.getLogger(ModificarEstablecimiento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton_imprimirActionPerformed
 
     private void jTextFieldParametroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaKeyPressed
         // TODO add your handling code here:
-           Control_Establecimiento cc = new Control_Establecimiento();
+        Control_Departamento cc = new Control_Departamento();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
-        cc.buscarDocenteParaConsultaestalecimiento(parametroBusqueda);
+        cc.buscarDocenteParaConsultaDepartamento(parametroBusqueda);
 
-            ocultar_columnas_establecimiento();
-        tam_columnas_establecimiento(); 
+        ocultar_columnas_departamento();
+        tam_columnas_departamento();
     }//GEN-LAST:event_jTextFieldParametroBusquedaKeyPressed
 
-    private void jTableListarEstablecimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListarEstablecimientoMouseClicked
+    private void jTableListarDepartamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListarDepartamentoMouseClicked
         // TODO add your handling code here:
         try {
-                    int fila = jTableListarEstablecimiento.rowAtPoint(evt.getPoint());
-                    
-                        idestablecimiento=(jTableListarEstablecimiento.getValueAt(fila, 0).toString());
-          jLabel_IDestablecimiento.setText((jTableListarEstablecimiento.getValueAt(fila, 0).toString()));
-          jTextFieldCodigoEstablecimiento.setText((jTableListarEstablecimiento.getValueAt(fila, 1).toString()));
-            jTextFieldNombreEstableciento.setText((jTableListarEstablecimiento.getValueAt(fila, 2).toString()));
-        jTextFieldSedeUgel.setText((jTableListarEstablecimiento.getValueAt(fila, 3).toString()));
+            int fila = jTableListarDepartamento.rowAtPoint(evt.getPoint());
 
-            
+            iddepartamento = (jTableListarDepartamento.getValueAt(fila, 0).toString());
+            jLabel_IDdepartamento.setText((jTableListarDepartamento.getValueAt(fila, 0).toString()));
+            jTextFieldCodigoDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 1).toString()));
+            jTextFieldNombreDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 2).toString()));
+            jTextFieldSedeUgel.setText((jTableListarDepartamento.getValueAt(fila, 4).toString()));
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
 
-            
-            
         }
 
-    }//GEN-LAST:event_jTableListarEstablecimientoMouseClicked
+    }//GEN-LAST:event_jTableListarDepartamentoMouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String reporte = JOptionPane.showInputDialog(null, "Escriba Titulo de la hoja?");
         // IMPRIMIR POR IMPRESORA
         try {
             //Mensaje de encabezado
-            MessageFormat  headerFormat = new MessageFormat("Reportes de "+reporte);
+            MessageFormat headerFormat = new MessageFormat("Reportes de " + reporte);
             //Mensaje en el pie de pagina
             MessageFormat footerFormat = new MessageFormat("Reporte");
             //Imprimir JTable
-            jtablereporte_porestablec.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+            jtablereporte_pordepartamento.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch (PrinterException ex) {
-            Logger.getLogger(ModificarEstablecimiento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         }
         jDialogPlanilla.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jTextFieldCodigoEstablecimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoEstablecimientoKeyTyped
+    private void jTextFieldCodigoDepartamentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoDepartamentoKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
+        char c = evt.getKeyChar();
 
-        if( jTextFieldCodigoEstablecimiento.getText().length()== 8) {
+        if (jTextFieldCodigoDepartamento.getText().length() == 8) {
 
             evt.consume();
         }
 
-    }//GEN-LAST:event_jTextFieldCodigoEstablecimientoKeyTyped
+    }//GEN-LAST:event_jTextFieldCodigoDepartamentoKeyTyped
 
     private void jTextFieldSedeUgelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSedeUgelKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
+        char c = evt.getKeyChar();
 
-        if(Character.isDigit(c)) {
+        if (Character.isDigit(c)) {
             getToolkit().beep();
 
             evt.consume();
 
             //    Error.setText("Ingresa Solo Letras";
-
-            }
+        }
 
     }//GEN-LAST:event_jTextFieldSedeUgelKeyTyped
 
     private void jButton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificarActionPerformed
-  
-        if(jLabel_IDestablecimiento.getText().equals("") ){
 
-          JOptionPane.showMessageDialog(rootPane, "Selecona un establecimiento");    
-           }    
-    else
-    {
-        Control_Establecimiento change = new Control_Establecimiento();
-   
-         String codesta= jTextFieldCodigoEstablecimiento.getText();
-         String nomesta=   jTextFieldNombreEstableciento.getText();
-        String sedeUgel= jTextFieldSedeUgel.getText();
-        
-        
-        change.ModificarEstablecimiento(idestablecimiento, codesta, nomesta,sedeUgel);
-          Control_BD.Control_Establecimiento load = new Control_Establecimiento();
-        load.CargarDocenteconsultaReporteEstablecimiento();
-            ocultar_columnas_establecimiento();
-        tam_columnas_establecimiento(); 
-            }     
+        if (jLabel_IDdepartamento.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(rootPane, "Seleciona un departamento");
+        } else {
+            Control_Departamento change = new Control_Departamento();
+
+            String codesta = jTextFieldCodigoDepartamento.getText();
+            String nomesta = jTextFieldNombreDepartamento.getText();
+
+            change.ModificarDepartamento(iddepartamento, codesta, nomesta);
+            Control_BD.Control_Departamento load = new Control_Departamento();
+            load.CargarDocenteconsultaReporteDepartamento();
+            ocultar_columnas_departamento();
+            tam_columnas_departamento();
+        }
     }//GEN-LAST:event_jButton_modificarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextFieldParametroBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldParametroBusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -467,14 +473,22 @@ String idestablecimiento="";
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarEstablecimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarEstablecimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarEstablecimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarEstablecimiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -487,9 +501,9 @@ String idestablecimiento="";
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModificarEstablecimiento dialog = new ModificarEstablecimiento(new javax.swing.JFrame(), true);
+                ModificarDepartamento dialog = new ModificarDepartamento(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                   
+
                 });
                 dialog.setVisible(true);
             }
@@ -509,18 +523,18 @@ String idestablecimiento="";
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel_IDestablecimiento;
+    private javax.swing.JLabel jLabel_IDdepartamento;
     private javax.swing.JLabel jLabel_i;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    public static javax.swing.JTable jTableListarEstablecimiento;
-    private javax.swing.JTextField jTextFieldCodigoEstablecimiento;
-    private javax.swing.JTextField jTextFieldNombreEstableciento;
+    public static javax.swing.JTable jTableListarDepartamento;
+    private javax.swing.JTextField jTextFieldCodigoDepartamento;
+    private javax.swing.JTextField jTextFieldNombreDepartamento;
     private javax.swing.JTextField jTextFieldParametroBusqueda;
     private javax.swing.JTextField jTextFieldSedeUgel;
-    public static javax.swing.JTable jtablereporte_porestablec;
+    public static javax.swing.JTable jtablereporte_pordepartamento;
     // End of variables declaration//GEN-END:variables
 }

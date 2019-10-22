@@ -6,7 +6,7 @@
 package Control_BD;
 
 import BD_Docente.ModificarDocente;
-import BD_Establecimiento.ModificarEstablecimiento;
+import BD_Departamento.ModificarDepartamento;
 import BD_HAB_DES.Agregar_hab_des;
 
 import BD_Reportes.ConsultarReporte;
@@ -172,7 +172,7 @@ public class Control_Docente {
         };
       //le asigna el modelo al jtable
        
-                           ModificarEstablecimiento.jTableListarEstablecimiento.setModel(modelo);
+                           ModificarDepartamento.jTableListarDepartamento.setModel(modelo);
 
         //ejecuta una consulta a la BD
         ejecutarConsultaTodaTablaDocente();
