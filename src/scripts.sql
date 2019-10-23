@@ -6,7 +6,7 @@
 -- Tiempo de generación: 09-11-2017 a las 16:17:58
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
-use mysql;
+-- use mysql;
 update user set password='root' where User='root';
 flush privileges;
 
@@ -38,9 +38,6 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `departamento_buscar` (IN `parametro` VARCHAR(50))  NO SQL
 SELECT a.ID_DEPARTAMENTO, a.COD_DEPARTAMENTO, a.DEPARTAMENTO, a.ID_EMPRESA, b.nombre EMPRESA FROM t_departamento a join empresa b on a.ID_EMPRESA=b.id WHERE a.DEPARTAMENTO LIKE parametro OR a.COD_DEPARTAMENTO LIKE parametro$$
 
-INSERT INTO t_docente ( DNI_DOC,ID_DEPARTAMENTO,COD_MOD,TIPO,CUENTA_BANCARIA,NOMBRE,AP_PATERNO,AP_MATERNO) VALUES( SDNI_DOCENTE,sid_e,SCOD_MOD,STIPO,SCUENTA_BANCARIA,SNOMBRE,SAP_PATERNO,SAP_MATERNO);
-END$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_departamento` (IN `SID_DEPARTAMENTO` INT(10), IN `SCOD_DEPARTAMENTO` CHAR(8), IN `SDEPARTAMENTO` VARCHAR(100), IN `SID_EMPRESA` VARCHAR(50))  NO SQL
 BEGIN
 
@@ -67,7 +64,7 @@ CREATE TABLE `Empresa` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `t_establecimiento`
+-- Estructura de tabla para la tabla `t_departamento`
 --
 
 CREATE TABLE `t_departamento` (
