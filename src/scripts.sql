@@ -7,6 +7,8 @@
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 -- use mysql;
+
+-- Abner 13
 update user set password='root' where User='root';
 flush privileges;
 
@@ -41,7 +43,7 @@ SELECT a.ID_DEPARTAMENTO, a.COD_DEPARTAMENTO, a.DEPARTAMENTO, a.ID_EMPRESA, b.no
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_departamento` (IN `SID_DEPARTAMENTO` INT(10), IN `SCOD_DEPARTAMENTO` CHAR(8), IN `SDEPARTAMENTO` VARCHAR(100), IN `SID_EMPRESA` VARCHAR(50))  NO SQL
 BEGIN
 
-INSERT INTO t_departamento ( COD_DEPARTAMENTO,DEPARTAMENTO,ID_EMPRESA) VALUES( SCOD_DEPARTAMENTO,SDEPARTAMENTO,SID_EMPRESA);;
+INSERT INTO t_departamento ( COD_DEPARTAMENTO,DEPARTAMENTO,ID_EMPRESA) VALUES( SCOD_DEPARTAMENTO,SDEPARTAMENTO,SID_EMPRESA);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_departamento` ()  NO SQL
@@ -59,7 +61,7 @@ CREATE TABLE `Empresa` (
   Id int(10) NOT NULL auto_increment,
   nombre VARCHAR(25),
   PRIMARY KEY(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
