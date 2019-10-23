@@ -72,6 +72,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem_listarUser = new javax.swing.JMenuItem();
         jMenu_planilla1 = new javax.swing.JMenu();
         jMenuItem_add_haberes1 = new javax.swing.JMenuItem();
+        jMenuItem_add_haberes2 = new javax.swing.JMenuItem();
         jMenu_docente1 = new javax.swing.JMenu();
         jMenuItem_add_doc1 = new javax.swing.JMenuItem();
         jMenuItem_mod_doc1 = new javax.swing.JMenuItem();
@@ -223,7 +224,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu_basedatos.add(jMenu_usuario);
 
         jMenu_planilla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/newspaper.png"))); // NOI18N
-        jMenu_planilla1.setText("Agregar remuneraciones");
+        jMenu_planilla1.setText("Planillas");
         jMenu_planilla1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jMenuItem_add_haberes1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -235,6 +236,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu_planilla1.add(jMenuItem_add_haberes1);
+
+        jMenuItem_add_haberes2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItem_add_haberes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/newspaper.png"))); // NOI18N
+        jMenuItem_add_haberes2.setText("Modificar");
+        jMenuItem_add_haberes2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_add_haberes2ActionPerformed(evt);
+            }
+        });
+        jMenu_planilla1.add(jMenuItem_add_haberes2);
 
         jMenu_basedatos.add(jMenu_planilla1);
 
@@ -405,6 +416,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         addEmp.setVisible(true);
     }//GEN-LAST:event_jMenuItem_mod_doc1ActionPerformed
 
+    private void jMenuItem_add_haberes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_haberes2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem_add_haberes2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -455,6 +470,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_add_estab;
     private javax.swing.JMenuItem jMenuItem_add_haberes;
     private javax.swing.JMenuItem jMenuItem_add_haberes1;
+    private javax.swing.JMenuItem jMenuItem_add_haberes2;
     private javax.swing.JMenuItem jMenuItem_listarUser;
     private javax.swing.JMenuItem jMenuItem_mod_doc;
     private javax.swing.JMenuItem jMenuItem_mod_doc1;
