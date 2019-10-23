@@ -5,9 +5,8 @@
  */
 package Empresa;
 
-import BD_Docente.*;
 import About.*;
-import Control_BD.Control_Docente;
+import Control_BD.Control_Empleado;
 import Control_BD.Control_Empresa;
 import Control_BD.Control_Departamento;
 import java.awt.Color;
@@ -34,7 +33,7 @@ public class AgregarEmpresa extends javax.swing.JDialog {
 
         // llamada de datos
         Control_BD.Control_Departamento load = new Control_Departamento();
-        load.CargarDepartamentoDocente();
+        load.CargarDepartamentoEmpleado();
         //Centramos nuestro jDialog
         jDialogEstablecimiento.setLocation(200, 100);
         //La hacemos modal
@@ -263,7 +262,7 @@ public class AgregarEmpresa extends javax.swing.JDialog {
         // TODO add your handling code here:
         Control_Departamento cc = new Control_Departamento();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
-        cc.buscarDepartamentoParaAgregarDocente(parametroBusqueda);
+        cc.buscarDepartamentoParaAgregarEmpleado(parametroBusqueda);
         int[] anchos = {200, 200, 300, 100};
         for (int i = 0; i < AgregarEmpresa.SeleccionarEstablecimiento.getColumnCount(); i++) {
             AgregarEmpresa.SeleccionarEstablecimiento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);

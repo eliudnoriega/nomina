@@ -5,7 +5,7 @@ package Control_BD;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import BD_Docente.AgregarDocente;
+import BD_Empleado.AgregarEmpleado;
 import BD_Departamento.ModificarDepartamento;
 import Control_BD.CerrarConexiones;
 import Control_BD.ConexionConBaseDatos;
@@ -27,7 +27,7 @@ public class Control_Departamento {
     //modelo para la tabla
     DefaultTableModel modelo;
     //vector con los titulos de cada columna
-    String[] titulosColumnas = {"ID_DEPARTAMENTO", "COD_DEPARTAMENTO", "DEPARTAMENTO", "ID_EMPRESA", "EMPRESA"};
+    String[] titulosColumnas = {"ID_DEPARTAMENTO", "COD_DEPARTAMENTO", "DEPARTAMENTO", "ID_EMPRESA"}; //"EMPRESA"};
     //matriz donde se almacena los datos de cada celda de la tabla
     String info[][] = {};
     // Conectar Base de Datos
@@ -84,7 +84,7 @@ public class Control_Departamento {
         }
     }
 
-    public void CargarDocenteconsultaReporteDepartamento() {
+    public void CargarEmpleadoconsultaReporteDepartamento() {
 
         modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -103,7 +103,7 @@ public class Control_Departamento {
          */
     }
 
-    public void CargarDepartamentoDocente() {
+    public void CargarDepartamentoEmpleado() {
 
         modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -111,7 +111,7 @@ public class Control_Departamento {
             }
         };
         //le asigna el modelo al jtable
-//        AgregarDocente.SeleccionarDepartamento.setModel(modelo);
+//        AgregarEmpleado.SeleccionarDepartamento.setModel(modelo);
 
         //ejecuta una consulta a la BD
         ejecutarConsultaTodaTablaDepartamento();
@@ -149,7 +149,7 @@ public class Control_Departamento {
                 String EMPRESA = rs.getString("EMPRESA");
 
                 //crea un vector donde los está la informacion (se crea una fila)
-                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA, EMPRESA};
+                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA,EMPRESA};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
@@ -171,7 +171,7 @@ public class Control_Departamento {
     }//cierra metodo ejecutarConsulta
     //           Control_Establecimiento cc = new Control_Establecimiento();
 
-    public void buscarDepartamentoParaAgregarDocente(String parametroBusqueda) {
+    public void buscarDepartamentoParaAgregarEmpleado(String parametroBusqueda) {
 
         modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -180,7 +180,7 @@ public class Control_Departamento {
         };
         ;
         //le asigna el modelo al jtable
-//        AgregarDocente.SeleccionarDepartamento.setModel(modelo);
+//        AgregarEmpleado.SeleccionarDepartamento.setModel(modelo);
         //ejecuta una consulta a la BD
         parametroBusqueda = "%" + parametroBusqueda + "%";
         buscarRegistroDepartamento(parametroBusqueda);
@@ -194,7 +194,7 @@ public class Control_Departamento {
         try {
 
             conexion.setAutoCommit(false);
-            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call departamento_buscar  (?)}");
+            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call departamento_buscar (?)}");
             prcProcedimientoAlmacenado.setString(1, parametroBusqueda);
 
             rs = prcProcedimientoAlmacenado.executeQuery();
@@ -205,7 +205,7 @@ public class Control_Departamento {
                 String ID_EMPRESA = rs.getString("ID_EMPRESA");
                 String EMPRESA = rs.getString("EMPRESA");
                 //crea un vector donde los está la informacion (se crea una fila)
-                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA, EMPRESA};
+                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA,EMPRESA};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
@@ -226,7 +226,7 @@ public class Control_Departamento {
         }
     }
 
-    public void buscarDocenteParaConsultaDepartamento(String parametroBusqueda) {
+    public void buscarEmpleadoParaConsultaDepartamento(String parametroBusqueda) {
 
         modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {

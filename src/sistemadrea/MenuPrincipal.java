@@ -6,8 +6,8 @@
 package sistemadrea;
 
 import About.About;
-import BD_Docente.AgregarDocente;
-import BD_Docente.ModificarDocente;
+import BD_Empleado.AgregarEmpleado;
+import BD_Empleado.ModificarEmpleado;
 import BD_Departamento.AgregarDepartamento;
 import BD_Departamento.ModificarDepartamento;
 import BD_HAB_DES.AgregarDescuentos;
@@ -146,7 +146,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu_basedatos.add(jMenu_establecimiento);
 
         jMenu_docente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/teacher.png"))); // NOI18N
-        jMenu_docente.setText("Docente");
+        jMenu_docente.setText("Empleado");
         jMenu_docente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jMenuItem_add_doc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -161,7 +161,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuItem_mod_doc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem_mod_doc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/order-192.png"))); // NOI18N
-        jMenuItem_mod_doc.setText("Modificar Docente");
+        jMenuItem_mod_doc.setText("Modificar Empleado");
         jMenuItem_mod_doc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_mod_docActionPerformed(evt);
@@ -328,7 +328,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItem_add_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_docActionPerformed
 //        new addProductos(this, true).setVisible(true);
         //AgregarDocente.main(null); 
-        new AgregarDocente(this, true).setVisible(true);
+        new AgregarEmpleado(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem_add_docActionPerformed
 
     private void jMenuItem_add_estabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_estabActionPerformed
@@ -366,8 +366,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem_mod_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_mod_docActionPerformed
 //        new ConsultarProductos(this, true).setVisible(true);
-        //  ModificarDocente.main(null); 
-        new ModificarDocente(this, true).setVisible(true);
+        //  ModificarEmpleado.main(null); 
+        new ModificarEmpleado(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem_mod_docActionPerformed
 
     private void jMenuItem_por_mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_por_mesActionPerformed

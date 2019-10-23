@@ -1,6 +1,5 @@
 package Empresa;
 
-import BD_Docente.*;
 import static BD_Reportes.ConsultarReporte.jtablahaber;
 import Control_BD.*;
 import java.awt.Desktop;
@@ -351,7 +350,7 @@ public class ModificarEmpresa extends javax.swing.JDialog {
         // llamada de datos
         Control_Reportes cc = new Control_Reportes();
         System.out.println("recibiendo " + iddocente);
-        cc.buscarReportePorDocentePlanilla(iddocente);
+        cc.buscarReportePorEmpleadoPlanilla(iddocente);
         int[] anchos = {100, 100, 100, 100, 100, 100, 100, 100, 100};
         for (int i = 0; i < ModificarEmpresa.jtablereporte_pordocente.getColumnCount(); i++) {
             ModificarEmpresa.jtablereporte_pordocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
@@ -389,12 +388,12 @@ public class ModificarEmpresa extends javax.swing.JDialog {
 
     private void jTextFieldParametroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaKeyPressed
         // TODO add your handling code here:
-        Control_Docente cc = new Control_Docente();
+        Control_Empleado cc = new Control_Empleado();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
         cc.buscarDocenteParaConsultadocente(parametroBusqueda);
         int[] anchos = {35, 300, 50, 100, 100, 150, 100, 300, 50};
-        for (int i = 0; i < BD_Docente.ModificarDocente.jTableListarDocente.getColumnCount(); i++) {
-            BD_Docente.ModificarDocente.jTableListarDocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        for (int i = 0; i < BD_Empleado.ModificarEmpleado.jTableListarDocente.getColumnCount(); i++) {
+            BD_Empleado.ModificarEmpleado.jTableListarDocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
         ocultar_columnas_docente();
         tam_columnas_empresa();

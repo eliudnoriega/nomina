@@ -5,7 +5,7 @@
  */
 package Control_BD;
 
-import BD_Docente.ModificarDocente;
+import BD_Empleado.ModificarEmpleado;
 import BD_Departamento.ModificarDepartamento;
 import BD_HAB_DES.Agregar_hab_des;
 
@@ -25,21 +25,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PC PERSONAL RICH
  */
-public class Control_Docente {
+public class Control_Empleado {
     
     
         DefaultTableModel modelo;
     //vector con los titulos de cada columna
-    String[] titulosColumnas = { "DNI_DOCENTE", "ID_ESTABLECIMIENTO", "COD_MOD","TIPO","CUENTA_BANCARIA","NOMBRE","AP_PATERNO","AP_MATERNO"};
+    String[] titulosColumnas = { "DNI_EMP", "ID_DEPARTAMENTO", "SALARIO","PUESTO","CUENTA_BANCARIA","NOMBRE","PRIMER_APE","SEGUNDO_APE"};
     //matriz donde se almacena los datos de cada celda de la tabla
     String info[][] = {};
     // Conectar Base de Datos
     ConexionConBaseDatos conectar = new ConexionConBaseDatos();
     
     
-        public void ModificarDocente(String DNI_DOCENTE,
-                String ID_ESTABLECIMIENTO,String COD_MOD,String TIPO,
-                String CUENTA_BANCARIA,String NOMBRE,String AP_PATERNO,String AP_MATERNO) {
+        public void ModificarEmpleado(String DNI_EMP,
+                String ID_DEPARTAMENTO,String SALARIO,String PUESTO,
+                String CUENTA_BANCARIA,String NOMBRE,String PRIMER_APE,String SEGUNDO_APE) {
 
     
         try {
@@ -47,12 +47,12 @@ public class Control_Docente {
             Statement comando = conexion.createStatement();
             
             // linea de codigo de mysql que actualiza regristos que va modificar
-            int cantidad = comando.executeUpdate("update t_docente set "
-                + " COD_MOD ='" + COD_MOD + "' "+ ", TIPO ='" + TIPO + "'"+ ", CUENTA_BANCARIA ='" + CUENTA_BANCARIA + "'"+ " , NOMBRE ='" + NOMBRE + "' , AP_PATERNO ='" + AP_PATERNO + "' , AP_MATERNO ='" + AP_MATERNO + "'  where DNI_DOC='" + DNI_DOCENTE+"'");
+            int cantidad = comando.executeUpdate("update t_empleado set "
+                + " SALARIO ='" + SALARIO + "' "+ ", PUESTO ='" + PUESTO + "'"+ ", CUENTA_BANCARIA ='" + CUENTA_BANCARIA + "'"+ " , NOMBRE ='" + NOMBRE + "' , PRIMER_APE ='" + PRIMER_APE + "' , SEGUNDO_APE ='" + SEGUNDO_APE + "'  where DNI_EMP='" + DNI_EMP+"'");
             if (cantidad == 1) {
                 JOptionPane.showMessageDialog(null," Modifico con Exito");
             } else {
-                JOptionPane.showMessageDialog(null,"No existe docente de un codigo "+DNI_DOCENTE);
+                JOptionPane.showMessageDialog(null,"No existe empleado de un codigo "+DNI_EMP);
             }
             conexion.close();
         } catch (SQLException ex) {
@@ -60,27 +60,27 @@ public class Control_Docente {
         }
     }//cierra metodo modificarCliente
 
-     public static void  addDocente(String DNI_DOCENTE, String ID_ESTABLECIMIENTO,
-             String COD_MOD,String TIPO,String CUENTA_BANCARIA,String NOMBRE,String AP_PATERNO,
-             String AP_MATERNO) {
+     public static void  addEmpleado(String DNI_EMP,
+                String ID_DEPARTAMENTO,String SALARIO,String PUESTO,
+                String CUENTA_BANCARIA,String NOMBRE,String PRIMER_APE,String SEGUNDO_APE) {
 
          Connection reg = ConexionConBaseDatos.getConexion();//conecccion a la base de datos
    try {
             // Llamada al procedimiento almacenado
-            CallableStatement cst = reg.prepareCall("{call insertar_docente(?,?,?,?,?,?,?,?)}");
+            CallableStatement cst = reg.prepareCall("{call insertar_empleado(?,?,?,?,?,?,?,?)}");
 
                 // definimos los parametros de entrada
             
-            cst.setString(1,DNI_DOCENTE);
-            cst.setString(2,ID_ESTABLECIMIENTO);
-            cst.setString(3, COD_MOD);
-            cst.setString(4, TIPO);
+            cst.setString(1,DNI_EMP);
+            cst.setString(2,ID_DEPARTAMENTO);
+            cst.setString(3, SALARIO);
+            cst.setString(4, PUESTO);
             cst.setString(5,CUENTA_BANCARIA);
             cst.setString(6,NOMBRE);
-            cst.setString(7, AP_PATERNO);
-            cst.setString(8, AP_MATERNO);
+            cst.setString(7, PRIMER_APE);
+            cst.setString(8, SEGUNDO_APE);
                
-                   System.out.println("ejecutada: "+ID_ESTABLECIMIENTO);
+                   System.out.println("ejecutada: "+ID_DEPARTAMENTO);
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 
@@ -102,7 +102,7 @@ public class Control_Docente {
      
 
          ///////////
-               public void CargarDocenteReporte(){
+               public void CargarEmpleadoReporte(){
          
          modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -115,14 +115,14 @@ public class Control_Docente {
 
 
         //ejecuta una consulta a la BD
-        ejecutarConsultaTodaTablaDocente();
+        ejecutarConsultaTodaTablaEmpleado();
         
                                /*              int[] anchos = {35, 300, 40, 200, 40};
         for (int i = 0; i < Ventas.SeleccionarProductos.getColumnCount(); i++) {
             Ventas.SeleccionarProductos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
          */
      }
-            public void CargarDocenteconsultadocente(){
+            public void CargarEmpleadoconsultaempleado(){
          
          modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -131,17 +131,17 @@ public class Control_Docente {
         };
       //le asigna el modelo al jtable
        
-                ModificarDocente.jTableListarDocente.setModel(modelo);
+                ModificarEmpleado.jTableListarDocente.setModel(modelo);
 
         //ejecuta una consulta a la BD
-        ejecutarConsultaTodaTablaDocente();
+        ejecutarConsultaTodaTablaEmpleado();
         
                                /*              int[] anchos = {35, 300, 40, 200, 40};
         for (int i = 0; i < Ventas.SeleccionarProductos.getColumnCount(); i++) {
             Ventas.SeleccionarProductos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
          */
      }
-                   public void CargarDocente_hab_des(){
+                   public void CargarEmpleado_hab_des(){
          
          modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -153,7 +153,7 @@ public class Control_Docente {
                        Agregar_hab_des.jTableListarDocente.setModel(modelo);
 
         //ejecuta una consulta a la BD
-        ejecutarConsultaTodaTablaDocente();
+        ejecutarConsultaTodaTablaEmpleado();
         
                                /*              int[] anchos = {35, 300, 40, 200, 40};
         for (int i = 0; i < Ventas.SeleccionarProductos.getColumnCount(); i++) {
@@ -163,7 +163,7 @@ public class Control_Docente {
             
             
             
-                       public void CargarDocenteconsultaReportedocente(){
+                       public void CargarEmpleadoconsultaReporteempleado(){
          
          modelo = new DefaultTableModel(info, titulosColumnas) {
             public boolean isCellEditable(int row, int column) {
@@ -175,7 +175,7 @@ public class Control_Docente {
                            ModificarDepartamento.jTableListarDepartamento.setModel(modelo);
 
         //ejecuta una consulta a la BD
-        ejecutarConsultaTodaTablaDocente();
+        ejecutarConsultaTodaTablaEmpleado();
         
                                /*              int[] anchos = {35, 300, 40, 200, 40};
         for (int i = 0; i < Ventas.SeleccionarProductos.getColumnCount(); i++) {
@@ -188,7 +188,7 @@ public class Control_Docente {
     ResultSet resultado = null;
     PreparedStatement ps = null;
 
-                     public void ejecutarConsultaTodaTablaDocente() {
+                     public void ejecutarConsultaTodaTablaEmpleado() {
                          
                              conexion = ConexionConBaseDatos.getConexion();
                    ResultSet rs;
@@ -202,24 +202,26 @@ public class Control_Docente {
                                 /*instanciamos el objeto callable donde mandamos a pedir la cantidad
                                  *  parametros en este caso MostrarCampo no tiene
                                  *  y se coloca como se muestra*/
-                                CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call lista_docente()}");
+                                CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call lista_empleado()}");
                               rs=prcProcedimientoAlmacenado.executeQuery();
                               
                               
                            while(rs.next()){
-                     
-                String DNI_DOCENTE = rs.getString("DNI_DOC");
-                String ID_ESTABLECIMIENTO = rs.getString("ID_ESTAB");
-                String COD_MOD = rs.getString("COD_MOD");
-                 String TIPO = rs.getString("TIPO");
+/**
+ * (`DNI_EMP`, `ID_DEPARTAMENTO`, `SALARIO`, `PUESTO`, `CUENTA_BANCARIA`, `NOMBRE`, `PRIMER_APE`, `SEGUNDO_APE`
+ */                     
+                String DNI_EMP = rs.getString("DNI_EMP");
+                String ID_DEPARTAMENTO = rs.getString("ID_DEPARTAMENTO");
+                String SALARIO = rs.getString("SALARIO");
+                 String PUESTO = rs.getString("PUESTO");
                 String CUENTA_BANCARIA = rs.getString("CUENTA_BANCARIA");
                 String NOMBRE = rs.getString("NOMBRE");
-                String AP_PATERNO = rs.getString("AP_PATERNO");
-                String AP_MATERNO = rs.getString("AP_MATERNO");
+                String PRIMER_APE = rs.getString("PRIMER_APE");
+                String SEGUNDO_APE = rs.getString("SEGUNDO_APE");
 //                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla=
 //                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla;
                 //crea un vector donde los está la informacion (se crea una fila)
-                Object[] info = { DNI_DOCENTE, ID_ESTABLECIMIENTO,COD_MOD,TIPO, CUENTA_BANCARIA, NOMBRE,AP_PATERNO,AP_MATERNO};
+                Object[] info = { DNI_EMP, ID_DEPARTAMENTO,SALARIO,PUESTO, CUENTA_BANCARIA, NOMBRE,PRIMER_APE,SEGUNDO_APE};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
@@ -253,7 +255,7 @@ public class Control_Docente {
     
     
     /////////
-    public void buscarDocenteParaAgregarReporte(String parametroBusqueda) {
+    public void buscarEmpleadoParaAgregarReporte(String parametroBusqueda) {
 
         
 
@@ -303,7 +305,7 @@ public class Control_Docente {
 
             ;
             //le asigna el modelo al jtable
-            ModificarDocente.jTableListarDocente.setModel(modelo);
+            ModificarEmpleado.jTableListarDocente.setModel(modelo);
             //ejecuta una consulta a la BD
                        parametroBusqueda="%"+parametroBusqueda+"%";
             buscarRegistroPlanilla(parametroBusqueda);
@@ -349,22 +351,26 @@ public class Control_Docente {
 
       
           public void buscarRegistroPlanillapordni(String parametroBusqueda) {
+              
            conexion = ConexionConBaseDatos.getConexion();ResultSet rs; 
    try {   conexion.setAutoCommit(false); // Llamada al procedimiento almacenado
-        CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call docente_buscar_dni  (?)}");
+        CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call empleado_buscar_dni  (?)}");
         prcProcedimientoAlmacenado.setString(1, parametroBusqueda);// Parametro 1 del procedimiento almacenado
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado
                 rs=prcProcedimientoAlmacenado.executeQuery();
+                
+               
+                
                 while(rs.next()){
-                String DNI_DOCENTE = rs.getString("DNI_DOC");
-                String ID_ESTABLECIMIENTO = rs.getString("ID_ESTAB");
-                String COD_MOD = rs.getString("COD_MOD");
-                 String TIPO = rs.getString("TIPO");
+                String DNI_EMP = rs.getString("DNI_EMP");
+                String ID_DEPARTAMENTO = rs.getString("ID_DEPARTAMENTO");
+                String SALARIO = rs.getString("SALARIO");
+                 String PUESTO = rs.getString("PUESTO");
                 String CUENTA_BANCARIA = rs.getString("CUENTA_BANCARIA");
                 String NOMBRE = rs.getString("NOMBRE");
-                String AP_PATERNO = rs.getString("AP_PATERNO");
-                String AP_MATERNO = rs.getString("AP_MATERNO");
-                Object[] info = { DNI_DOCENTE, ID_ESTABLECIMIENTO,COD_MOD,TIPO, CUENTA_BANCARIA, NOMBRE,AP_PATERNO,AP_MATERNO};
+                String PRIMER_APE = rs.getString("PRIMER_APE");
+                String SEGUNDO_APE = rs.getString("SEGUNDO_APE");
+                Object[] info = { DNI_EMP, ID_DEPARTAMENTO,SALARIO,PUESTO, CUENTA_BANCARIA, NOMBRE,PRIMER_APE,SEGUNDO_APE};
                 modelo.addRow(info);  //al modelo de la tabla le agrega una fila
                            }conexion.commit();
                         }
@@ -398,25 +404,27 @@ public class Control_Docente {
             // Llamada al procedimiento almacenado
        
                                  conexion.setAutoCommit(false);
-            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call docente_buscar  (?)}");
+            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call empleado_buscar  (?)}");
                 // Parametro 1 del procedimiento almacenado
             prcProcedimientoAlmacenado.setString(1, parametroBusqueda);
              
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado
                               rs=prcProcedimientoAlmacenado.executeQuery();
                               
-                              
+/**
+  * (`DNI_EMP`, `ID_DEPARTAMENTO`, `SALARIO`, `PUESTO`, `CUENTA_BANCARIA`, `NOMBRE`, `PRIMER_APE`, `SEGUNDO_APE`
+  */                             
                            while(rs.next()){
-                String DNI_DOCENTE = rs.getString("DNI_DOC");
-                String ID_ESTABLECIMIENTO = rs.getString("ID_ESTAB");
-                String COD_MOD = rs.getString("COD_MOD");
-                 String TIPO = rs.getString("TIPO");
+                String DNI_EMP = rs.getString("DNI_EMP");
+                String ID_DEPARTAMENTO = rs.getString("ID_DEPARTAMENTO");
+                String SALARIO = rs.getString("SALARIO");
+                 String PUESTO = rs.getString("PUESTO");
                 String CUENTA_BANCARIA = rs.getString("CUENTA_BANCARIA");
                 String NOMBRE = rs.getString("NOMBRE");
-                String AP_PATERNO = rs.getString("AP_PATERNO");
-                String AP_MATERNO = rs.getString("AP_MATERNO");
+                String PRIMER_APE = rs.getString("PRIMER_APE");
+                String SEGUNDO_APE = rs.getString("SEGUNDO_APE");
                 
-                Object[] info = { DNI_DOCENTE, ID_ESTABLECIMIENTO,COD_MOD,TIPO, CUENTA_BANCARIA, NOMBRE,AP_PATERNO,AP_MATERNO};
+                Object[] info = { DNI_EMP, ID_DEPARTAMENTO,SALARIO,PUESTO, CUENTA_BANCARIA, NOMBRE,PRIMER_APE,SEGUNDO_APE};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info

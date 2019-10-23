@@ -1,7 +1,6 @@
 package BD_Departamento;
 
 import Control_BD.Control_Departamento;
-import BD_Docente.*;
 import Control_BD.*;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -51,7 +50,7 @@ public class ModificarDepartamento extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         Control_BD.Control_Departamento load = new Control_Departamento();
-        load.CargarDocenteconsultaReporteDepartamento();
+        load.CargarEmpleadoconsultaReporteDepartamento();
         ocultar_columnas_departamento();
         tam_columnas_departamento();
     }
@@ -352,7 +351,7 @@ public class ModificarDepartamento extends javax.swing.JDialog {
             //Mensaje de encabezado
             MessageFormat headerFormat = new MessageFormat("Reportes de " + reporte);
             //Mensaje en el pie de pagina
-            MessageFormat footerFormat = new MessageFormat("Lista de docentes");
+            MessageFormat footerFormat = new MessageFormat("Lista de Empleados");
             //Imprimir JTable
             jTableListarDepartamento.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch (PrinterException ex) {
@@ -364,7 +363,7 @@ public class ModificarDepartamento extends javax.swing.JDialog {
         // TODO add your handling code here:
         Control_Departamento cc = new Control_Departamento();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
-        cc.buscarDocenteParaConsultaDepartamento(parametroBusqueda);
+        cc.buscarEmpleadoParaConsultaDepartamento(parametroBusqueda);
 
         ocultar_columnas_departamento();
         tam_columnas_departamento();
@@ -442,7 +441,7 @@ public class ModificarDepartamento extends javax.swing.JDialog {
 
             change.ModificarDepartamento(iddepartamento, codesta, nomesta);
             Control_BD.Control_Departamento load = new Control_Departamento();
-            load.CargarDocenteconsultaReporteDepartamento();
+            load.CargarEmpleadoconsultaReporteDepartamento();
             ocultar_columnas_departamento();
             tam_columnas_departamento();
         }

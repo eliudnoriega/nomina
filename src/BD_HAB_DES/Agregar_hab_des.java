@@ -1,7 +1,6 @@
 
 package BD_HAB_DES;
 
-import BD_Docente.*;
 import static BD_Reportes.ConsultarReporte.jtablahaber;
 import Control_BD.*;
 import java.awt.Desktop;
@@ -65,8 +64,8 @@ String fecha="";
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-      Control_BD.Control_Docente load = new Control_Docente();
-        load.CargarDocente_hab_des();
+      Control_BD.Control_Empleado load = new Control_Empleado();
+        load.CargarEmpleado_hab_des();
         ocultar_columnas_docente();
         tam_columnas_docente();
     }
@@ -914,7 +913,7 @@ c.ejecutarGETdescuento();
                 jTable1.getColumnModel().getColumn( 5 ).setCellEditor(new MyTableCellEditor_haberes(db,"NOMBRE"));//Columna Edad
                 //        jTable1.getColumnModel().getColumn( 6 ).setCellEditor(new MyTableCellEditor_haberes(db,"AP_MATERNO"));
 
-                //Control_Docente change = new Control_Docente();
+                //Control_Docente change = new Control_Empleado();
 
                 //String iddoc=jLabel_docente.getText();
                 //                   Control_Haberes C=new Control_Haberes();
@@ -963,7 +962,7 @@ c.ejecutarGETdescuento();
             jTableDescuentos.getColumnModel().getColumn( 4 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"MONTO_DES"));//Columna Edad
             jTableDescuentos.getColumnModel().getColumn( 5 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"NOMBRE"));//Columna Edad
             //        jTable1.getColumnModel().getColumn( 6 ).setCellEditor(new MyTableCellEditor_Descuentos(db,"AP_MATERNO"));
-            //Control_Docente change = new Control_Docente();
+            //Control_Docente change = new Control_Empleado();
 
             //String iddoc=jLabel_docente.getText();
             //                   Control_Descuentos C=new Control_Descuentos();
@@ -988,7 +987,7 @@ c.ejecutarGETdescuento();
 
     private void jTextFieldParametroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaKeyPressed
         // TODO add your handling code here:
-        /* Control_Docente cc = new Control_Docente();
+        /* Control_Empleado cc = new Control_Empleado();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
         cc.buscarDocenteParahab_des(parametroBusqueda);
         int[] anchos = {35, 300, 50, 100, 100, 150,100, 300, 50};

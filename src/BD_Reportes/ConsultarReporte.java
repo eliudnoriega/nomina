@@ -1,7 +1,6 @@
 
 package BD_Reportes;
 
-import BD_Docente.*;
 import BD_HAB_DES.AgregarHaberes;
 import static BD_HAB_DES.AgregarHaberes.idHaber;
 import Control_BD.*;
@@ -109,7 +108,7 @@ DefaultTableModel modelo;
     //    jButtonBuscar_dni_nom.setEnabled(false);
 
         setLocationRelativeTo(null);
-//      Control_BD.Control_Docente load = new Control_Docente();
+//      Control_BD.Control_Empleado load = new Control_Empleado();
     //    load.CargarDocenteconsultadocente();
     }
 
@@ -580,8 +579,8 @@ DefaultTableModel modelo;
 private void llamarDocente() {
 
         // llamada de datos
-        Control_BD.Control_Docente load = new Control_Docente();
-        load.CargarDocenteReporte();
+        Control_BD.Control_Empleado load = new Control_Empleado();
+        load.CargarEmpleadoReporte();
         ocultar_columnas_docente();
                    tam_columnas_docente();
                   

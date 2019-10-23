@@ -17,7 +17,7 @@ public class ConexionConBaseDatos {
            conexion = null;
            //cargar nuestro driver
            Class.forName("com.mysql.jdbc.Driver");
-           conexion =DriverManager.getConnection("jdbc:mysql://localhost/nomina","root","root");
+           conexion =DriverManager.getConnection("jdbc:mysql://localhost/nomina","root","Wallpaper1@@@");
            System.out.println("conexion establecida");
        } catch (ClassNotFoundException | SQLException e) {
            System.out.println("error de conexion");

@@ -110,7 +110,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icon/teacher.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Docente"/>
+                <Property name="text" type="java.lang.String" value="Empleado"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
@@ -138,7 +138,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Icon/order-192.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Modificar Docente"/>
+                    <Property name="text" type="java.lang.String" value="Modificar Empleado"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_mod_docActionPerformed"/>

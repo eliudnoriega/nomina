@@ -5,7 +5,7 @@
  */
 package Control_BD;
 
-import BD_Docente.ModificarDocente;
+import BD_Empleado.ModificarEmpleado;
 import BD_Departamento.ModificarDepartamento;
 import BD_Reportes.ConsultarReporte;
 
@@ -39,7 +39,7 @@ public class Control_Reportes {
     ConexionConBaseDatos conectar = new ConexionConBaseDatos();
     
     
-     public void buscarReportePorDocentePlanilla(String parametroBusqueda) {
+     public void buscarReportePorEmpleadoPlanilla(String parametroBusqueda) {
 
         
 
@@ -51,10 +51,10 @@ public class Control_Reportes {
 
             ;
             //le asigna el modelo al jtable
-            ModificarDocente.jtablereporte_pordocente.setModel(modelo);
+            ModificarEmpleado.jtablereporte_pordocente.setModel(modelo);
             //ejecuta una consulta a la BD
 
-            ReportePorDocente(parametroBusqueda);
+            ReportePorEmpleado(parametroBusqueda);
 
     }
         public void buscarReportePorDocenteReporte(String parametroBusqueda) {
@@ -72,7 +72,7 @@ public class Control_Reportes {
             ConsultarReporte.jTableListar.setModel(modelo);
             //ejecuta una consulta a la BD
 
-            ReportePorDocente(parametroBusqueda);
+            ReportePorEmpleado(parametroBusqueda);
 
     }
      public void buscarReportePorDepartamentoPlanilla(String parametroBusqueda) {
@@ -337,7 +337,7 @@ public class Control_Reportes {
     
     
     
-    public void ReportePorDocente(String parametroBusqueda) {
+    public void ReportePorEmpleado(String parametroBusqueda) {
             conexion = ConexionConBaseDatos.getConexion(); ResultSet rs; 
    try {
             conexion.setAutoCommit(false);            // Llamada al procedimiento almacenado
@@ -346,7 +346,7 @@ public class Control_Reportes {
             rs=prcProcedimientoAlmacenado.executeQuery();
                            while(rs.next()){// Definimos los tipos de los parametros de salida 
                          String FECHA = rs.getString("FECHA");
-                String DNI_DOCENTE = rs.getString("DNI_DOCENTE");
+                String DNI_EMP = rs.getString("DNI_EMP");
                 String NOMBRE = rs.getString("NOMBRE");
                 String AP_PATERNO = rs.getString("AP_PATERNO");
                  String AP_MATERNO = rs.getString("AP_MATERNO");
@@ -354,7 +354,7 @@ public class Control_Reportes {
                 String DESCUENTOS = rs.getString("DESCUENTOS");
                 String M_TOTAL = rs.getString("M_TOTAL");
                 String DEPARTAMENTO = rs.getString("DEPARTAMENTO");
-                Object[] info = {FECHA, DNI_DOCENTE, NOMBRE, AP_PATERNO,AP_MATERNO,HABERES,DESCUENTOS,M_TOTAL,DEPARTAMENTO};
+                Object[] info = {FECHA, DNI_EMP, NOMBRE, AP_PATERNO,AP_MATERNO,HABERES,DESCUENTOS,M_TOTAL,DEPARTAMENTO};
                 modelo.addRow(info); //al modelo de la tabla le agrega una fila
                            }
                                 conexion.commit();

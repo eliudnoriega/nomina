@@ -1,5 +1,5 @@
 
-package BD_Docente;
+package BD_Empleado;
 
 import static BD_Reportes.ConsultarReporte.jtablahaber;
 import Control_BD.*;
@@ -23,33 +23,33 @@ import javax.swing.JTable;
  *
  * @author Sergio
  */
-public class ModificarDocente extends javax.swing.JDialog {
+public class ModificarEmpleado extends javax.swing.JDialog {
 String iddocente="";
     /**
      * Creates new form ListarCliente
      */
 
-            void  ocultar_columnas_docente() {
+            void  ocultar_columnas_empleado() {
        jTableListarDocente.getColumnModel().getColumn(0).setMaxWidth(0);
         jTableListarDocente.getColumnModel().getColumn(0).setMinWidth(0);
    jTableListarDocente.getColumnModel().getColumn(2).setMaxWidth(0);
         jTableListarDocente.getColumnModel().getColumn(2).setMinWidth(0);
             
     }
-               void  tam_columnas_docente() {
+               void  tam_columnas_empleado() {
                           int[] anchos = {0, 110, 0, 110, 50, 150, 250, 180, 180};
         for (int i = 0; i < jTableListarDocente.getColumnCount(); i++) {
             jTableListarDocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
             
     } 
-    public ModificarDocente(java.awt.Frame parent, boolean modal) {
+    public ModificarEmpleado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-      Control_BD.Control_Docente load = new Control_Docente();
-        load.CargarDocenteconsultadocente();
-        ocultar_columnas_docente();
-        tam_columnas_docente();
+      Control_BD.Control_Empleado load = new Control_Empleado();
+        load.CargarEmpleadoconsultaempleado();
+        ocultar_columnas_empleado();
+        tam_columnas_empleado();
     }
 
     /**
@@ -166,11 +166,11 @@ String iddocente="";
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tipo");
+        jLabel7.setText("Puesto");
 
         jLabel24.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Cod. modular");
+        jLabel24.setText("Salario");
 
         jTextFieldCodmodular.setBackground(new java.awt.Color(0, 102, 153));
         jTextFieldCodmodular.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -200,49 +200,55 @@ String iddocente="";
 
         jLabel10.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Id Establecimiento");
+        jLabel10.setText("Id. Departamento");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextFieldCodmodular, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(215, 215, 215))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel24))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel_establecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextFieldTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_establecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextFieldCodmodular, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldCuentaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCodmodular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_establecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel_establecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +256,7 @@ String iddocente="";
                 .addGap(35, 35, 35))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 640, 190));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 640, 180));
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -268,11 +274,11 @@ String iddocente="";
 
         jLabel27.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Ap paterno");
+        jLabel27.setText("Primer apellido");
 
         jLabel28.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Ap materno");
+        jLabel28.setText("Segundo apellido");
 
         jTextField_ap_materno.setBackground(new java.awt.Color(0, 102, 153));
         jTextField_ap_materno.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
@@ -320,23 +326,29 @@ String iddocente="";
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel25)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jLabel28)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField_ap_materno, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel26)
-                                .addComponent(jLabel27))
-                            .addComponent(jLabel28)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel25)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField_dni, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                    .addComponent(jTextField_ap_materno, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                    .addComponent(jTextField_nombre)
-                    .addComponent(jTextField_ap_paterno))
-                .addGap(18, 18, 18)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_ap_paterno, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 36, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_cancelar)
                     .addComponent(jButton_modificar))
@@ -375,7 +387,7 @@ String iddocente="";
 
         jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Id Docente");
+        jLabel9.setText("Id Empleado");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 100, 20));
 
         jLabel_docente.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,7 +402,7 @@ String iddocente="";
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Selecione Docente");
+        jLabel1.setText("Selecione Empleado");
 
         jButton_imprimir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/print.png"))); // NOI18N
@@ -418,6 +430,13 @@ String iddocente="";
                 jTextFieldParametroBusquedaKeyPressed(evt);
             }
         });
+
+        jDesktopPane1.setLayer(jLabel_i, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jButton_imprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jButtonCancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jTextFieldParametroBusqueda, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -463,12 +482,6 @@ String iddocente="";
                     .addComponent(jButtonCancelar))
                 .addGap(86, 86, 86))
         );
-        jDesktopPane1.setLayer(jLabel_i, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton_imprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButtonCancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jTextFieldParametroBusqueda, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1300, 460));
 
@@ -502,10 +515,10 @@ String iddocente="";
         // llamada de datos
                 Control_Reportes cc = new Control_Reportes();
  System.out.println("recibiendo "+iddocente);
-        cc.buscarReportePorDocentePlanilla(iddocente);
+        cc.buscarReportePorEmpleadoPlanilla(iddocente);
         int[] anchos = {100, 100, 100, 100, 100, 100,100, 100, 100};
-        for (int i = 0; i < ModificarDocente.jtablereporte_pordocente.getColumnCount(); i++) {
-            ModificarDocente.jtablereporte_pordocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+        for (int i = 0; i < ModificarEmpleado.jtablereporte_pordocente.getColumnCount(); i++) {
+            ModificarEmpleado.jtablereporte_pordocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
         //Centramos nuestro jDialog
         jDialogPlanilla.setLocation(200, 100);
         //La hacemos modal
@@ -533,20 +546,20 @@ String iddocente="";
             //Imprimir JTable
             jTableListarDocente.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch (PrinterException ex) {
-            Logger.getLogger(ModificarDocente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton_imprimirActionPerformed
 
     private void jTextFieldParametroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaKeyPressed
         // TODO add your handling code here:
-           Control_Docente cc = new Control_Docente();
+           Control_Empleado cc = new Control_Empleado();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
         cc.buscarDocenteParaConsultadocente(parametroBusqueda);
         int[] anchos = {35, 300, 50, 100, 100, 150,100, 300, 50};
-        for (int i = 0; i < BD_Docente.ModificarDocente.jTableListarDocente.getColumnCount(); i++) {
-            BD_Docente.ModificarDocente.jTableListarDocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
-           ocultar_columnas_docente();
-        tam_columnas_docente();
+        for (int i = 0; i < BD_Empleado.ModificarEmpleado.jTableListarDocente.getColumnCount(); i++) {
+            BD_Empleado.ModificarEmpleado.jTableListarDocente.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+           ocultar_columnas_empleado();
+        tam_columnas_empleado();
     }//GEN-LAST:event_jTextFieldParametroBusquedaKeyPressed
 
     private void jTableListarDocenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListarDocenteMouseClicked
@@ -589,7 +602,7 @@ String iddocente="";
             //Imprimir JTable
             jtablereporte_pordocente.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch (PrinterException ex) {
-            Logger.getLogger(ModificarDocente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
         jDialogPlanilla.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -663,11 +676,11 @@ String iddocente="";
         // obtener datos
     if(jLabel_docente.getText().equals("") ){
 
-          JOptionPane.showMessageDialog(rootPane, "Selecona un docente");    
+          JOptionPane.showMessageDialog(rootPane, "Selecona un Empleado");    
            }    
     else
     {
-            Control_Docente change = new Control_Docente();
+            Control_Empleado change = new Control_Empleado();
         
      //   String code = jTextField_busqueda.getText();
       
@@ -684,12 +697,12 @@ String iddocente="";
         String amaterno=jTextField_ap_paterno.getText();
         
         
-        change.ModificarDocente( dni, idestable,codmodula,tipo,cuentaban,nombre,apaterno,amaterno);
+        change.ModificarEmpleado( dni, idestable,codmodula,tipo,cuentaban,nombre,apaterno,amaterno);
         
-              Control_BD.Control_Docente load = new Control_Docente();
-        load.CargarDocenteconsultadocente();
-        ocultar_columnas_docente();
-        tam_columnas_docente();
+        Control_BD.Control_Empleado load = new Control_Empleado();
+        load.CargarEmpleadoconsultaempleado();
+        ocultar_columnas_empleado();
+        tam_columnas_empleado();
     }
     }//GEN-LAST:event_jButton_modificarActionPerformed
 
@@ -715,14 +728,18 @@ String iddocente="";
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -731,7 +748,7 @@ String iddocente="";
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModificarDocente dialog = new ModificarDocente(new javax.swing.JFrame(), true);
+                ModificarEmpleado dialog = new ModificarEmpleado(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                    
                 });
