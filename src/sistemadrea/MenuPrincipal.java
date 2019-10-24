@@ -13,6 +13,8 @@ import BD_Departamento.ModificarDepartamento;
 import BD_HAB_DES.AgregarDescuentos;
 import BD_HAB_DES.AgregarHaberes;
 import BD_HAB_DES.Agregar_hab_des;
+import BD_Planilla.AgregarPlanilla;
+import BD_Planilla.ModificarPlanilla;
 import BD_Reportes.ConsultarReporte;
 import BD_Usuario.Modificar_usuario;
 import BD_Usuario.Agregar_usuario;
@@ -73,9 +75,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu_planilla1 = new javax.swing.JMenu();
         jMenuItem_add_haberes1 = new javax.swing.JMenuItem();
         jMenuItem_add_haberes2 = new javax.swing.JMenuItem();
-        jMenu_docente1 = new javax.swing.JMenu();
-        jMenuItem_add_doc1 = new javax.swing.JMenuItem();
-        jMenuItem_mod_doc1 = new javax.swing.JMenuItem();
         jMenu_reportes = new javax.swing.JMenu();
         jMenu_fecha_repor = new javax.swing.JMenu();
         jMenuItem_por_mes = new javax.swing.JMenuItem();
@@ -249,32 +248,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu_basedatos.add(jMenu_planilla1);
 
-        jMenu_docente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/teacher.png"))); // NOI18N
-        jMenu_docente1.setText("Empresa");
-        jMenu_docente1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jMenuItem_add_doc1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jMenuItem_add_doc1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/contact-new.png"))); // NOI18N
-        jMenuItem_add_doc1.setText("Agregar Empresa");
-        jMenuItem_add_doc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_add_doc1ActionPerformed(evt);
-            }
-        });
-        jMenu_docente1.add(jMenuItem_add_doc1);
-
-        jMenuItem_mod_doc1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jMenuItem_mod_doc1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/order-192.png"))); // NOI18N
-        jMenuItem_mod_doc1.setText("Modificar Empresa");
-        jMenuItem_mod_doc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_mod_doc1ActionPerformed(evt);
-            }
-        });
-        jMenu_docente1.add(jMenuItem_mod_doc1);
-
-        jMenu_basedatos.add(jMenu_docente1);
-
         jMenuBar1.add(jMenu_basedatos);
 
         jMenu_reportes.setForeground(new java.awt.Color(255, 0, 0));
@@ -325,27 +298,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem_add_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_docActionPerformed
-//        new addProductos(this, true).setVisible(true);
-        //AgregarDocente.main(null); 
-        new AgregarDocente(this, true).setVisible(true);
-    }//GEN-LAST:event_jMenuItem_add_docActionPerformed
-
-    private void jMenuItem_add_estabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_estabActionPerformed
-        // TODO add your handling code here:
-        new AgregarDepartamento(this, true).setVisible(true);
-
-    }//GEN-LAST:event_jMenuItem_add_estabActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem_mod_estaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_mod_estaActionPerformed
-        //new ListarCliente(this, true).setVisible(true);
-        new ModificarDepartamento(this, true).setVisible(true);
-        //  ModificarEstablecimiento.main(null); 
-    }//GEN-LAST:event_jMenuItem_mod_estaActionPerformed
 
     private void jMenuItem_acercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_acercadeActionPerformed
         // TODO add your handling code here:
@@ -358,31 +313,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //        Ventas.main(null);
     }//GEN-LAST:event_jMenu_reportesMouseClicked
 
-    private void jMenuItem_add_haberesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_haberesActionPerformed
-        // TODO add your handling code here:
-        // Agregar_Planilla.main(null); 
-        new AgregarHaberes(this, true).setVisible(true);
-    }//GEN-LAST:event_jMenuItem_add_haberesActionPerformed
-
-    private void jMenuItem_mod_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_mod_docActionPerformed
-//        new ConsultarProductos(this, true).setVisible(true);
-        //  ModificarDocente.main(null); 
-        new ModificarDocente(this, true).setVisible(true);
-    }//GEN-LAST:event_jMenuItem_mod_docActionPerformed
-
     private void jMenuItem_por_mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_por_mesActionPerformed
         // TODO add your handling code here:
         // ConsultarReporte.main(null); 
         new ConsultarReporte(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem_por_mesActionPerformed
 
-    private void jMenuItem_AgregaruserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_AgregaruserActionPerformed
+    private void jMenuItem_add_haberes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_haberes2ActionPerformed
         // TODO add your handling code here:
-        Agregar_usuario form = new Agregar_usuario();
-        //        this.add(form);
-        form.toFront();
-        form.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_AgregaruserActionPerformed
+        new ModificarPlanilla(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_add_haberes2ActionPerformed
+
+    private void jMenuItem_add_haberes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_haberes1ActionPerformed
+        // TODO add your handling code here:
+        new AgregarPlanilla(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_add_haberes1ActionPerformed
 
     private void jMenuItem_listarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_listarUserActionPerformed
         // TODO add your handling code here:
@@ -392,33 +337,47 @@ public class MenuPrincipal extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_jMenuItem_listarUserActionPerformed
 
+    private void jMenuItem_AgregaruserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_AgregaruserActionPerformed
+        // TODO add your handling code here:
+        Agregar_usuario form = new Agregar_usuario();
+        //        this.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_AgregaruserActionPerformed
+
     private void jMenuItem_add_descuentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_descuentosActionPerformed
         // TODO add your handling code here:
         new AgregarDescuentos(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem_add_descuentosActionPerformed
 
-    private void jMenuItem_add_haberes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_haberes1ActionPerformed
+    private void jMenuItem_add_haberesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_haberesActionPerformed
         // TODO add your handling code here:
-        new Agregar_hab_des(this, true).setVisible(true);
-    }//GEN-LAST:event_jMenuItem_add_haberes1ActionPerformed
+        // Agregar_Planilla.main(null);
+        new AgregarHaberes(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_add_haberesActionPerformed
 
-    private void jMenuItem_add_doc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_doc1ActionPerformed
-        // TODO add your handling code here:
-        AgregarEmpresa addEmp = new AgregarEmpresa(this, true);
-        addEmp.toFront();
-        addEmp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_add_doc1ActionPerformed
+    private void jMenuItem_mod_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_mod_docActionPerformed
+        //        new ConsultarProductos(this, true).setVisible(true);
+        //  ModificarDocente.main(null);
+        new ModificarDocente(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_mod_docActionPerformed
 
-    private void jMenuItem_mod_doc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_mod_doc1ActionPerformed
-        // TODO add your handling code here:
-        ModificarEmpresa addEmp = new ModificarEmpresa(this, true);
-        addEmp.toFront();
-        addEmp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_mod_doc1ActionPerformed
+    private void jMenuItem_add_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_docActionPerformed
+        //        new addProductos(this, true).setVisible(true);
+        //AgregarDocente.main(null);
+        new AgregarDocente(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_add_docActionPerformed
 
-    private void jMenuItem_add_haberes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_haberes2ActionPerformed
+    private void jMenuItem_mod_estaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_mod_estaActionPerformed
+        //new ListarCliente(this, true).setVisible(true);
+        new ModificarDepartamento(this, true).setVisible(true);
+        //  ModificarEstablecimiento.main(null);
+    }//GEN-LAST:event_jMenuItem_mod_estaActionPerformed
+
+    private void jMenuItem_add_estabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_estabActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem_add_haberes2ActionPerformed
+        new AgregarDepartamento(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_add_estabActionPerformed
 
     /**
      * @param args the command line arguments
@@ -466,25 +425,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_acercade;
     private javax.swing.JMenuItem jMenuItem_add_descuentos;
     private javax.swing.JMenuItem jMenuItem_add_doc;
-    private javax.swing.JMenuItem jMenuItem_add_doc1;
     private javax.swing.JMenuItem jMenuItem_add_estab;
     private javax.swing.JMenuItem jMenuItem_add_haberes;
     private javax.swing.JMenuItem jMenuItem_add_haberes1;
     private javax.swing.JMenuItem jMenuItem_add_haberes2;
     private javax.swing.JMenuItem jMenuItem_listarUser;
     private javax.swing.JMenuItem jMenuItem_mod_doc;
-    private javax.swing.JMenuItem jMenuItem_mod_doc1;
     private javax.swing.JMenuItem jMenuItem_mod_esta;
     private javax.swing.JMenuItem jMenuItem_por_mes;
-    public static javax.swing.JMenu jMenu_basedatos;
+    private javax.swing.JMenu jMenu_basedatos;
     private javax.swing.JMenu jMenu_docente;
-    private javax.swing.JMenu jMenu_docente1;
     private javax.swing.JMenu jMenu_establecimiento;
     private javax.swing.JMenu jMenu_fecha_repor;
     private javax.swing.JMenu jMenu_otros;
     private javax.swing.JMenu jMenu_planilla;
     private javax.swing.JMenu jMenu_planilla1;
     private javax.swing.JMenu jMenu_reportes;
-    public static javax.swing.JMenu jMenu_usuario;
+    private javax.swing.JMenu jMenu_usuario;
     // End of variables declaration//GEN-END:variables
 }

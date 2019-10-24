@@ -33,8 +33,6 @@ public class ModificarDepartamento extends javax.swing.JDialog {
     void ocultar_columnas_departamento() {
         jTableListarDepartamento.getColumnModel().getColumn(0).setMaxWidth(0);
         jTableListarDepartamento.getColumnModel().getColumn(0).setMinWidth(0);
-        jTableListarDepartamento.getColumnModel().getColumn(3).setMaxWidth(0);
-        jTableListarDepartamento.getColumnModel().getColumn(3).setMinWidth(0);
 
     }
 
@@ -84,8 +82,6 @@ public class ModificarDepartamento extends javax.swing.JDialog {
         jTextFieldCodigoDepartamento = new javax.swing.JTextField();
         jTextFieldNombreDepartamento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextFieldSedeUgel = new javax.swing.JTextField();
         jButton_modificar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -201,20 +197,6 @@ public class ModificarDepartamento extends javax.swing.JDialog {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Departamento");
 
-        jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Empresa");
-
-        jTextFieldSedeUgel.setEditable(false);
-        jTextFieldSedeUgel.setBackground(new java.awt.Color(0, 102, 153));
-        jTextFieldSedeUgel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jTextFieldSedeUgel.setOpaque(false);
-        jTextFieldSedeUgel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldSedeUgelKeyTyped(evt);
-            }
-        });
-
         jButton_modificar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/guardar.png"))); // NOI18N
         jButton_modificar.setText("Modificar");
@@ -246,24 +228,20 @@ public class ModificarDepartamento extends javax.swing.JDialog {
                 .addGap(42, 42, 42)
                 .addComponent(jButton2)
                 .addGap(67, 67, 67)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_modificar))
+                .addComponent(jButton_modificar)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombreDepartamento)
-                            .addComponent(jTextFieldSedeUgel)
-                            .addComponent(jTextFieldCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
                     .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextFieldNombreDepartamento)
+                        .addComponent(jTextFieldCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -278,14 +256,10 @@ public class ModificarDepartamento extends javax.swing.JDialog {
                     .addComponent(jLabel7)
                     .addComponent(jTextFieldNombreDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldSedeUgel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(62, 62, 62)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_modificar)
                     .addComponent(jButton2))
@@ -379,7 +353,6 @@ public class ModificarDepartamento extends javax.swing.JDialog {
             jLabel_IDdepartamento.setText((jTableListarDepartamento.getValueAt(fila, 0).toString()));
             jTextFieldCodigoDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 1).toString()));
             jTextFieldNombreDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 2).toString()));
-            jTextFieldSedeUgel.setText((jTableListarDepartamento.getValueAt(fila, 4).toString()));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -414,20 +387,6 @@ public class ModificarDepartamento extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jTextFieldCodigoDepartamentoKeyTyped
-
-    private void jTextFieldSedeUgelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSedeUgelKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (Character.isDigit(c)) {
-            getToolkit().beep();
-
-            evt.consume();
-
-            //    Error.setText("Ingresa Solo Letras";
-        }
-
-    }//GEN-LAST:event_jTextFieldSedeUgelKeyTyped
 
     private void jButton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificarActionPerformed
 
@@ -521,7 +480,6 @@ public class ModificarDepartamento extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_IDdepartamento;
     private javax.swing.JLabel jLabel_i;
@@ -534,7 +492,6 @@ public class ModificarDepartamento extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldCodigoDepartamento;
     private javax.swing.JTextField jTextFieldNombreDepartamento;
     private javax.swing.JTextField jTextFieldParametroBusqueda;
-    private javax.swing.JTextField jTextFieldSedeUgel;
     public static javax.swing.JTable jtablereporte_pordepartamento;
     // End of variables declaration//GEN-END:variables
 }

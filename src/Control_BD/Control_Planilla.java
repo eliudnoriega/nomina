@@ -6,6 +6,7 @@
 package Control_BD;
 
 import BD_Departamento.ModificarDepartamento;
+import BD_Planilla.ModificarPlanilla;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,13 +24,13 @@ public class Control_Planilla {
     //modelo para la tabla
     DefaultTableModel modelo;
     //vector con los titulos de cada columna
-    String[] titulosColumnas = {"ID_DEPARTAMENTO", "COD_DEPARTAMENTO", "DEPARTAMENTO", "ID_EMPRESA", "EMPRESA"};
+    String[] titulosColumnas = {"ID_DEPARTAMENTO", "COD_DEPARTAMENTO", "DEPARTAMENTO"};
     //matriz donde se almacena los datos de cada celda de la tabla
     String info[][] = {};
     // Conectar Base de Datos
     ConexionConBaseDatos conectar = new ConexionConBaseDatos();
 
-    public void ModificarDepartamento(String ID_DEPARTAMENTO, String COD_DEPARTAMENTO,
+    public void ModificarPlanilla(String ID_DEPARTAMENTO, String COD_DEPARTAMENTO,
             String DEPARTAMENTO) {
 
         try {
@@ -50,19 +51,18 @@ public class Control_Planilla {
         }
     }//cierra metodo modificarCliente
 
-    public static void addDepartamento(Integer ID_DEPARTAMENTO, String COD_DEPARTAMENTO,
+    public static void addPlanilla(Integer ID_DEPARTAMENTO, String COD_DEPARTAMENTO,
             String DEPARTAMENTO, Integer ID_EMPRESA) {
 
         Connection reg = ConexionConBaseDatos.getConexion();
         try {
 
             // Llamada al procedimiento almacenado
-            CallableStatement cst = reg.prepareCall("{call insertar_departamento  (?,?,?)}");
+            CallableStatement cst = reg.prepareCall("{call insertar_departamento  (?,?)}");
 
             // enviar parametros
             cst.setString(1, COD_DEPARTAMENTO);
             cst.setString(2, DEPARTAMENTO);
-            cst.setInt(3, ID_EMPRESA);
 
             // Definimos los tipos de los parametros de salida del procedimiento almacenado
             System.out.println("ejecutada");
@@ -88,7 +88,7 @@ public class Control_Planilla {
             }
         };
         //le asigna el modelo al jtable
-        ModificarDepartamento.jTableListarDepartamento.setModel(modelo);
+        ModificarPlanilla.jTableListarDepartamento.setModel(modelo);
 
         //ejecuta una consulta a la BD
         ejecutarConsultaTodaTablaDepartamento();
@@ -141,11 +141,9 @@ public class Control_Planilla {
                 String ID_DEPARTAMENTO = rs.getString("ID_DEPARTAMENTO");
                 String COD_DEPARTAMENTO = rs.getString("COD_DEPARTAMENTO");
                 String DEPARTAMENTO = rs.getString("DEPARTAMENTO");
-                String ID_EMPRESA = rs.getString("ID_EMPRESA");
-                String EMPRESA = rs.getString("EMPRESA");
 
                 //crea un vector donde los está la informacion (se crea una fila)
-                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA, EMPRESA};
+                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
@@ -198,10 +196,8 @@ public class Control_Planilla {
                 String ID_DEPARTAMENTO = rs.getString("ID_DEPARTAMENTO");
                 String COD_DEPARTAMENTO = rs.getString("COD_DEPARTAMENTO");
                 String DEPARTAMENTO = rs.getString("DEPARTAMENTO");
-                String ID_EMPRESA = rs.getString("ID_EMPRESA");
-                String EMPRESA = rs.getString("EMPRESA");
                 //crea un vector donde los está la informacion (se crea una fila)
-                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA, EMPRESA};
+                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
@@ -231,7 +227,7 @@ public class Control_Planilla {
         };
         ;
         //le asigna el modelo al jtable
-        ModificarDepartamento.jTableListarDepartamento.setModel(modelo);
+        ModificarPlanilla.jTableListarDepartamento.setModel(modelo);
         //ejecuta una consulta a la BD
         parametroBusqueda = "%" + parametroBusqueda + "%";
         buscarRegistroDepartamento(parametroBusqueda);

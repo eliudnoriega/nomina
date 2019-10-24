@@ -32,11 +32,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
      */
 
     void ocultar_columnas_departamento() {
-        jTableListarDepartamento.getColumnModel().getColumn(0).setMaxWidth(0);
-        jTableListarDepartamento.getColumnModel().getColumn(0).setMinWidth(0);
-        jTableListarDepartamento.getColumnModel().getColumn(3).setMaxWidth(0);
-        jTableListarDepartamento.getColumnModel().getColumn(3).setMinWidth(0);
-
+        
     }
 
     void tam_columnas_departamento() {
@@ -51,7 +47,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        Control_BD.Control_Departamento load = new Control_Departamento();
+        Control_BD.Control_Planilla load = new Control_Planilla();
         load.CargarDocenteconsultaReporteDepartamento();
         ocultar_columnas_departamento();
         tam_columnas_departamento();
@@ -85,12 +81,12 @@ public class ModificarPlanilla extends javax.swing.JDialog {
         jTextFieldCodigoDepartamento = new javax.swing.JTextField();
         jTextFieldNombreDepartamento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextFieldSedeUgel = new javax.swing.JTextField();
         jButton_modificar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel_IDdepartamento = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextFieldNombreDepartamento1 = new javax.swing.JTextField();
         jButton_imprimir = new javax.swing.JButton();
 
         jDialogPlanilla.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,7 +124,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Selecione Departamento");
+        jLabel1.setText("Selecione Planilla");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 570, 50));
 
         jTableListarDepartamento.setBackground(new java.awt.Color(0, 102, 153));
@@ -185,7 +181,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
 
         jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Codigo  Departamento");
+        jLabel6.setText("Codigo Planilla");
 
         jTextFieldCodigoDepartamento.setBackground(new java.awt.Color(0, 102, 153));
         jTextFieldCodigoDepartamento.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
@@ -200,21 +196,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Departamento");
-
-        jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Empresa");
-
-        jTextFieldSedeUgel.setEditable(false);
-        jTextFieldSedeUgel.setBackground(new java.awt.Color(0, 102, 153));
-        jTextFieldSedeUgel.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jTextFieldSedeUgel.setOpaque(false);
-        jTextFieldSedeUgel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldSedeUgelKeyTyped(evt);
-            }
-        });
+        jLabel7.setText("Fecha Inicio");
 
         jButton_modificar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/guardar.png"))); // NOI18N
@@ -237,35 +219,45 @@ public class ModificarPlanilla extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("IdDepto");
+        jLabel9.setText("Id Planilla");
+
+        jLabel10.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Fecha Fin");
+
+        jTextFieldNombreDepartamento1.setBackground(new java.awt.Color(0, 102, 153));
+        jTextFieldNombreDepartamento1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton2)
-                .addGap(67, 67, 67)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_modificar))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombreDepartamento)
-                            .addComponent(jTextFieldSedeUgel)
-                            .addComponent(jTextFieldCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel9))
-                .addContainerGap(172, Short.MAX_VALUE))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                                    .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldNombreDepartamento1)
+                                        .addComponent(jTextFieldNombreDepartamento)
+                                        .addComponent(jTextFieldCodigoDepartamento, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(62, 62, 62)
+                        .addComponent(jButton_modificar)
+                        .addGap(0, 134, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,11 +270,11 @@ public class ModificarPlanilla extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextFieldNombreDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldSedeUgel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextFieldNombreDepartamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jLabel_IDdepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -380,7 +372,6 @@ public class ModificarPlanilla extends javax.swing.JDialog {
             jLabel_IDdepartamento.setText((jTableListarDepartamento.getValueAt(fila, 0).toString()));
             jTextFieldCodigoDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 1).toString()));
             jTextFieldNombreDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 2).toString()));
-            jTextFieldSedeUgel.setText((jTableListarDepartamento.getValueAt(fila, 4).toString()));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -415,20 +406,6 @@ public class ModificarPlanilla extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jTextFieldCodigoDepartamentoKeyTyped
-
-    private void jTextFieldSedeUgelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSedeUgelKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (Character.isDigit(c)) {
-            getToolkit().beep();
-
-            evt.consume();
-
-            //    Error.setText("Ingresa Solo Letras";
-        }
-
-    }//GEN-LAST:event_jTextFieldSedeUgelKeyTyped
 
     private void jButton_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificarActionPerformed
 
@@ -565,12 +542,12 @@ public class ModificarPlanilla extends javax.swing.JDialog {
     private javax.swing.JButton jButton_modificar;
     private javax.swing.JDialog jDialogPlanilla;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_IDdepartamento;
     private javax.swing.JLabel jLabel_i;
@@ -582,8 +559,8 @@ public class ModificarPlanilla extends javax.swing.JDialog {
     public static javax.swing.JTable jTableListarDepartamento;
     private javax.swing.JTextField jTextFieldCodigoDepartamento;
     private javax.swing.JTextField jTextFieldNombreDepartamento;
+    private javax.swing.JTextField jTextFieldNombreDepartamento1;
     private javax.swing.JTextField jTextFieldParametroBusqueda;
-    private javax.swing.JTextField jTextFieldSedeUgel;
     public static javax.swing.JTable jtablereporte_pordepartamento;
     // End of variables declaration//GEN-END:variables
 }

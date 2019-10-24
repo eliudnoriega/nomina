@@ -38,30 +38,18 @@ DELIMITER $$
 
 -- Procedimientos para tabla Departamento
 CREATE DEFINER=`root`@`localhost` PROCEDURE `departamento_buscar` (IN `parametro` VARCHAR(50))  NO SQL
-SELECT a.ID_DEPARTAMENTO, a.COD_DEPARTAMENTO, a.DEPARTAMENTO, a.ID_EMPRESA, b.nombre EMPRESA FROM t_departamento a join empresa b on a.ID_EMPRESA=b.id WHERE a.DEPARTAMENTO LIKE parametro OR a.COD_DEPARTAMENTO LIKE parametro$$
+SELECT a.ID_DEPARTAMENTO, a.COD_DEPARTAMENTO, a.DEPARTAMENTO FROM t_departamento a WHERE a.DEPARTAMENTO LIKE parametro OR a.COD_DEPARTAMENTO LIKE parametro$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_departamento` (IN `SID_DEPARTAMENTO` INT(10), IN `SCOD_DEPARTAMENTO` CHAR(8), IN `SDEPARTAMENTO` VARCHAR(100), IN `SID_EMPRESA` VARCHAR(50))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_departamento` (IN `SID_DEPARTAMENTO` INT(10), IN `SCOD_DEPARTAMENTO` CHAR(8), IN `SDEPARTAMENTO` VARCHAR(100))  NO SQL
 BEGIN
 
-INSERT INTO t_departamento ( COD_DEPARTAMENTO,DEPARTAMENTO,ID_EMPRESA) VALUES( SCOD_DEPARTAMENTO,SDEPARTAMENTO,SID_EMPRESA);
+INSERT INTO t_departamento ( COD_DEPARTAMENTO,DEPARTAMENTO ) VALUES( SCOD_DEPARTAMENTO,SDEPARTAMENTO );
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_departamento` ()  NO SQL
-SELECT a.ID_DEPARTAMENTO, a.COD_DEPARTAMENTO, a.DEPARTAMENTO, b.id id_empresa, b.nombre EMPRESA FROM t_departamento a join empresa b on a.ID_EMPRESA=b.id$$
+SELECT a.ID_DEPARTAMENTO, a.COD_DEPARTAMENTO, a.DEPARTAMENTO FROM t_departamento a$$
 
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `empresa`
---
-
-CREATE TABLE `Empresa` (
-  Id int(10) NOT NULL auto_increment,
-  nombre VARCHAR(25),
-  PRIMARY KEY(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -73,8 +61,6 @@ CREATE TABLE `t_departamento` (
   `ID_DEPARTAMENTO` int(10) NOT NULL,
   `COD_DEPARTAMENTO` char(8) COLLATE utf8_spanish_ci DEFAULT NULL,
   `DEPARTAMENTO` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `ID_EMPRESA` int(10) NOT NULL,
-  FOREIGN KEY (ID_EMPRESA) REFERENCES empresa(id),
   PRIMARY KEY (ID_DEPARTAMENTO)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -114,6 +100,12 @@ ALTER TABLE `t_usuario`
 --
 ALTER TABLE `t_usuario`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `t_usuario`
+--
+ALTER TABLE `t_departamento`
+  MODIFY `ID_DEPARTAMENTO` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

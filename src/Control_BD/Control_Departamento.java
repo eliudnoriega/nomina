@@ -27,7 +27,7 @@ public class Control_Departamento {
     //modelo para la tabla
     DefaultTableModel modelo;
     //vector con los titulos de cada columna
-    String[] titulosColumnas = {"ID_DEPARTAMENTO", "COD_DEPARTAMENTO", "DEPARTAMENTO", "ID_EMPRESA", "EMPRESA"};
+    String[] titulosColumnas = {"ID_DEPARTAMENTO", "COD_DEPARTAMENTO", "DEPARTAMENTO"};
     //matriz donde se almacena los datos de cada celda de la tabla
     String info[][] = {};
     // Conectar Base de Datos
@@ -55,18 +55,17 @@ public class Control_Departamento {
     }//cierra metodo modificarCliente
 
     public static void addDepartamento(Integer ID_DEPARTAMENTO, String COD_DEPARTAMENTO,
-            String DEPARTAMENTO, Integer ID_EMPRESA) {
+            String DEPARTAMENTO) {
 
         Connection reg = ConexionConBaseDatos.getConexion();
         try {
 
             // Llamada al procedimiento almacenado
-            CallableStatement cst = reg.prepareCall("{call insertar_departamento  (?,?,?)}");
+            CallableStatement cst = reg.prepareCall("{call insertar_departamento  (?,?)}");
 
             // enviar parametros
             cst.setString(1, COD_DEPARTAMENTO);
             cst.setString(2, DEPARTAMENTO);
-            cst.setInt(3, ID_EMPRESA);
 
             // Definimos los tipos de los parametros de salida del procedimiento almacenado
             System.out.println("ejecutada");
@@ -145,11 +144,8 @@ public class Control_Departamento {
                 String ID_DEPARTAMENTO = rs.getString("ID_DEPARTAMENTO");
                 String COD_DEPARTAMENTO = rs.getString("COD_DEPARTAMENTO");
                 String DEPARTAMENTO = rs.getString("DEPARTAMENTO");
-                String ID_EMPRESA = rs.getString("ID_EMPRESA");
-                String EMPRESA = rs.getString("EMPRESA");
-
                 //crea un vector donde los está la informacion (se crea una fila)
-                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA, EMPRESA};
+                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
@@ -202,10 +198,8 @@ public class Control_Departamento {
                 String ID_DEPARTAMENTO = rs.getString("ID_DEPARTAMENTO");
                 String COD_DEPARTAMENTO = rs.getString("COD_DEPARTAMENTO");
                 String DEPARTAMENTO = rs.getString("DEPARTAMENTO");
-                String ID_EMPRESA = rs.getString("ID_EMPRESA");
-                String EMPRESA = rs.getString("EMPRESA");
                 //crea un vector donde los está la informacion (se crea una fila)
-                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO, ID_EMPRESA, EMPRESA};
+                Object[] info = {ID_DEPARTAMENTO, COD_DEPARTAMENTO, DEPARTAMENTO};
 
                 //al modelo de la tabla le agrega una fila
                 //con los datos que están en info
