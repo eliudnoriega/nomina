@@ -36,7 +36,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
     }
 
     void tam_columnas_departamento() {
-        int[] anchos = {0, 200, 200,0 , 200};
+        int[] anchos = {0, 100, 100, 100, 100};
         for (int i = 0; i < jTableListarDepartamento.getColumnCount(); i++) {
             jTableListarDepartamento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }
@@ -48,7 +48,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         Control_BD.Control_Planilla load = new Control_Planilla();
-        load.CargarDocenteconsultaReporteDepartamento();
+        load.CargarDocenteconsultaReportePlanilla();
         ocultar_columnas_departamento();
         tam_columnas_departamento();
     }
@@ -355,9 +355,9 @@ public class ModificarPlanilla extends javax.swing.JDialog {
 
     private void jTextFieldParametroBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldParametroBusquedaKeyPressed
         // TODO add your handling code here:
-        Control_Departamento cc = new Control_Departamento();
+        Control_Planilla cc = new Control_Planilla();
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
-        cc.buscarDocenteParaConsultaDepartamento(parametroBusqueda);
+        cc.buscarDocenteParaConsultaPlanilla(parametroBusqueda);
 
         ocultar_columnas_departamento();
         tam_columnas_departamento();
@@ -372,6 +372,7 @@ public class ModificarPlanilla extends javax.swing.JDialog {
             jLabel_IDdepartamento.setText((jTableListarDepartamento.getValueAt(fila, 0).toString()));
             jTextFieldCodigoDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 1).toString()));
             jTextFieldNombreDepartamento.setText((jTableListarDepartamento.getValueAt(fila, 2).toString()));
+            jTextFieldNombreDepartamento1.setText((jTableListarDepartamento.getValueAt(fila, 3).toString()));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -411,16 +412,17 @@ public class ModificarPlanilla extends javax.swing.JDialog {
 
         if (jLabel_IDdepartamento.getText().equals("")) {
 
-            JOptionPane.showMessageDialog(rootPane, "Seleciona un departamento");
+            JOptionPane.showMessageDialog(rootPane, "Seleciona una Planilla");
         } else {
-            Control_Departamento change = new Control_Departamento();
+            Control_Planilla change = new Control_Planilla();
 
             String codesta = jTextFieldCodigoDepartamento.getText();
             String nomesta = jTextFieldNombreDepartamento.getText();
+            String nomesta1 = jTextFieldNombreDepartamento1.getText();
 
-            change.ModificarDepartamento(iddepartamento, codesta, nomesta);
-            Control_BD.Control_Departamento load = new Control_Departamento();
-            load.CargarDocenteconsultaReporteDepartamento();
+            change.ModificarPlanilla(iddepartamento, codesta, nomesta, nomesta1);
+            Control_BD.Control_Planilla load = new Control_Planilla();
+            load.CargarDocenteconsultaReportePlanilla();
             ocultar_columnas_departamento();
             tam_columnas_departamento();
         }

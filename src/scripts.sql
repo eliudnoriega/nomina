@@ -49,6 +49,19 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_departamento` ()  NO SQL
 SELECT a.ID_DEPARTAMENTO, a.COD_DEPARTAMENTO, a.DEPARTAMENTO FROM t_departamento a$$
 
+-- Procedimientos para tabla Planilla
+CREATE DEFINER=`root`@`localhost` PROCEDURE `planilla_buscar` (IN `parametro` VARCHAR(50))  NO SQL
+SELECT a.ID_PLANILLA, a.COD_PLANILLA, a.FECHA_INICIO, a.FECHA_FIN FROM t_planilla a WHERE a.COD_PLANILLA LIKE parametro$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_planilla` (IN `SCOD_PLANILLA` CHAR(8), IN `SFECHA_INICIO` DATE, IN `SFECHA_FIN` DATE)  NO SQL
+BEGIN
+
+INSERT INTO t_planilla ( COD_PLANILLA,FECHA_INICIO,FECHA_FIN ) VALUES( SCOD_PLANILLA,SFECHA_INICIO,SFECHA_FIN );
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_planilla` ()  NO SQL
+SELECT a.ID_PLANILLA, a.COD_PLANILLA, a.FECHA_INICIO, a.FECHA_FIN FROM t_planilla a$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -62,6 +75,20 @@ CREATE TABLE `t_departamento` (
   `COD_DEPARTAMENTO` char(8) COLLATE utf8_spanish_ci DEFAULT NULL,
   `DEPARTAMENTO` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (ID_DEPARTAMENTO)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_departamento`
+--
+
+CREATE TABLE `t_planilla` (
+  `ID_PLANILLA` int(10) NOT NULL AUTO_INCREMENT,
+  `COD_PLANILLA` char(8) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `FECHA_INICIO` DATE DEFAULT NULL,
+  `FECHA_FIN` DATE DEFAULT NULL,
+  PRIMARY KEY (ID_PLANILLA)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------

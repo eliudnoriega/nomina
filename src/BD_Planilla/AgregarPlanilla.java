@@ -5,17 +5,19 @@
  */
 package BD_Planilla;
 
-import BD_Departamento.*;
 import About.*;
-import Control_BD.Control_Departamento;
+import Control_BD.Control_Planilla;
 import Control_BD.Control_Empresa;
 import Util.Combo;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.net.URI;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -39,7 +41,7 @@ public class AgregarPlanilla extends javax.swing.JDialog {
 
         setLocationRelativeTo(null);
 
-        llenarComboEmpresas();
+//        llenarComboEmpresas();
     }
 
     /**
@@ -207,10 +209,15 @@ public class AgregarPlanilla extends javax.swing.JDialog {
             int ides = 0;
             ides = ultim0_departamento;
 
-            String COD_ESTABLECIMIENTO = jTextFieldCodigoEstablecimiento.getText();
-            String ESTABLECIMIENTO = (jTextFieldEstableciento.getText());
+            String COD_PLANILLA = jTextFieldCodigoEstablecimiento.getText();
+            String FECHA_INICIO = (jTextFieldEstableciento.getText());
+            String FECHA_FIN = (jTextFieldEstableciento1.getText());
             
-            Control_Departamento.addDepartamento(null, COD_ESTABLECIMIENTO, ESTABLECIMIENTO);
+            try {
+                Control_Planilla.addPlanilla(COD_PLANILLA, FECHA_INICIO, FECHA_FIN);
+            } catch (ParseException ex) {
+                Logger.getLogger(AgregarPlanilla.class.getName()).log(Level.SEVERE, null, ex);
+            }
             // codigo de introducir datos a la mysql
             JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(this, "Registrado CORRECTAMENTE", "Registrado", JOptionPane.PLAIN_MESSAGE);
