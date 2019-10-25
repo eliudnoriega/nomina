@@ -63,7 +63,7 @@ private void llamarDepartamento() {
         jDialogEstablecimiento = new javax.swing.JDialog();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        SeleccionarEstablecimiento = new javax.swing.JTable();
+        SeleccionarDepartamento = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel21 = new javax.swing.JLabel();
@@ -100,9 +100,9 @@ private void llamarDepartamento() {
 
         jScrollPane3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        SeleccionarEstablecimiento.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        SeleccionarEstablecimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane3.setViewportView(SeleccionarEstablecimiento);
+        SeleccionarDepartamento.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        SeleccionarDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane3.setViewportView(SeleccionarDepartamento);
 
         jDialogEstablecimiento.getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 610, 220));
         jDialogEstablecimiento.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -238,12 +238,8 @@ private void llamarDepartamento() {
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldCuentaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(179, 179, 179))
+                    .addComponent(jTextFieldCuentaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextFieldCodmodular, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -426,15 +422,15 @@ private void llamarDepartamento() {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // boton de selecciona productos
-        int i = SeleccionarEstablecimiento.getSelectedRow();
+        int i = SeleccionarDepartamento.getSelectedRow();
         if (i == -1) {
             JOptionPane.showMessageDialog(null, "Favor... seleccione una fila");
         } else//de lo contrario si se selecciono la fila
         {
             //            SeleccionarProductos.setValueAt(0, "");
             // obtener valor de tabla por columna y enviar datos a texfield
-            idesta=String.valueOf(SeleccionarEstablecimiento.getValueAt(i, 0));
-            jLabel_establecimiento.setText(String.valueOf(SeleccionarEstablecimiento.getValueAt(i, 0)));
+            idesta=String.valueOf(SeleccionarDepartamento.getValueAt(i, 0));
+            jLabel_establecimiento.setText(String.valueOf(SeleccionarDepartamento.getValueAt(i, 0)));
 System.out.println(idesta);
         }
         jDialogEstablecimiento.dispose();
@@ -446,8 +442,8 @@ System.out.println(idesta);
         String parametroBusqueda = jTextFieldParametroBusqueda.getText();
         cc.buscarDepartamentoParaAgregarEmpleado(parametroBusqueda);
         int[] anchos = {200, 200, 300, 100};
-        for (int i = 0; i < AgregarEmpleado.SeleccionarEstablecimiento.getColumnCount(); i++) {
-            AgregarEmpleado.SeleccionarEstablecimiento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
+        for (int i = 0; i < AgregarEmpleado.SeleccionarDepartamento.getColumnCount(); i++) {
+            AgregarEmpleado.SeleccionarDepartamento.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);}
     }//GEN-LAST:event_jTextFieldParametroBusquedaKeyPressed
 
     private void jTextField_dniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_dniKeyPressed
@@ -600,7 +596,7 @@ System.out.println(idesta);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JTable SeleccionarEstablecimiento;
+    public static javax.swing.JTable SeleccionarDepartamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;

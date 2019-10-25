@@ -5,17 +5,19 @@
  */
 package BD_Planilla;
 
-import BD_Departamento.*;
 import About.*;
-import Control_BD.Control_Departamento;
+import Control_BD.Control_Planilla;
 import Control_BD.Control_Empresa;
 import Util.Combo;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.net.URI;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -39,7 +41,7 @@ public class AgregarPlanilla extends javax.swing.JDialog {
 
         setLocationRelativeTo(null);
 
-        llenarComboEmpresas();
+//        llenarComboEmpresas();
     }
 
     /**
@@ -57,11 +59,11 @@ public class AgregarPlanilla extends javax.swing.JDialog {
         jTextFieldCodigoEstablecimiento = new javax.swing.JTextField();
         jTextFieldEstableciento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel_i = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextFieldEstableciento1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel2.setFont(new java.awt.Font("Baskerville Old Face", 0, 32)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
@@ -78,7 +80,7 @@ public class AgregarPlanilla extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Codigo  Departamento");
+        jLabel3.setText("Codigo  Planilla");
 
         jTextFieldCodigoEstablecimiento.setBackground(new java.awt.Color(0, 102, 153));
         jTextFieldCodigoEstablecimiento.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
@@ -98,11 +100,7 @@ public class AgregarPlanilla extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Departamento");
-
-        jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Empresa");
+        jLabel4.setText("Fecha de Inicio");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/guardar.png"))); // NOI18N
@@ -123,14 +121,14 @@ public class AgregarPlanilla extends javax.swing.JDialog {
             }
         });
 
-        jLabel_i.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/school.png"))); // NOI18N
+        jLabel_i.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/shipping.png"))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        jTextFieldEstableciento1.setBackground(new java.awt.Color(0, 102, 153));
+        jTextFieldEstableciento1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Fecha Fin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,22 +148,22 @@ public class AgregarPlanilla extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel_i, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(76, 76, 76)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel_i, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldEstableciento)
                     .addComponent(jTextFieldCodigoEstablecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                     .addComponent(jButton1)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(jTextFieldEstableciento1))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_i, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -175,14 +173,17 @@ public class AgregarPlanilla extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(18, 18, 18))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTextFieldEstableciento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1))))
-                .addGap(18, 18, 18)
+                                .addGap(3, 3, 3)
+                                .addComponent(jTextFieldEstableciento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel_i, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -208,11 +209,15 @@ public class AgregarPlanilla extends javax.swing.JDialog {
             int ides = 0;
             ides = ultim0_departamento;
 
-            String COD_ESTABLECIMIENTO = jTextFieldCodigoEstablecimiento.getText();
-            String ESTABLECIMIENTO = (jTextFieldEstableciento.getText());
-            Integer ID_EMPRESA = Integer.parseInt(((Combo) jComboBox1.getSelectedItem()).getId());
-
-            Control_Departamento.addDepartamento(null, COD_ESTABLECIMIENTO, ESTABLECIMIENTO, ID_EMPRESA);
+            String COD_PLANILLA = jTextFieldCodigoEstablecimiento.getText();
+            String FECHA_INICIO = (jTextFieldEstableciento.getText());
+            String FECHA_FIN = (jTextFieldEstableciento1.getText());
+            
+            try {
+                Control_Planilla.addPlanilla(COD_PLANILLA, FECHA_INICIO, FECHA_FIN);
+            } catch (ParseException ex) {
+                Logger.getLogger(AgregarPlanilla.class.getName()).log(Level.SEVERE, null, ex);
+            }
             // codigo de introducir datos a la mysql
             JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(this, "Registrado CORRECTAMENTE", "Registrado", JOptionPane.PLAIN_MESSAGE);
@@ -242,10 +247,6 @@ public class AgregarPlanilla extends javax.swing.JDialog {
     private void jTextFieldCodigoEstablecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoEstablecimientoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCodigoEstablecimientoActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,21 +325,20 @@ public class AgregarPlanilla extends javax.swing.JDialog {
         for (Combo ob : resp) {
             newModel.addElement(ob);
         }
-        jComboBox1.setModel(newModel);
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_i;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldCodigoEstablecimiento;
     private javax.swing.JTextField jTextFieldEstableciento;
+    private javax.swing.JTextField jTextFieldEstableciento1;
     // End of variables declaration//GEN-END:variables
 }

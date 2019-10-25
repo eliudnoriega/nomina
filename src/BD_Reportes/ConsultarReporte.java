@@ -617,7 +617,7 @@ private void llamarReporte() {
         jDialogBoleta.setMinimumSize(new Dimension(700, 500));
 
         //Establecemos un título para el jDialog
-        jDialogBoleta.setTitle("Lista de Docentes.");
+        jDialogBoleta.setTitle("Lista de Empleados.");
         //La hacemos visible.
         jDialogBoleta.setVisible(true);
     }
@@ -631,7 +631,7 @@ private void llamarReporte() {
         
           int i = jTableListar.getSelectedRow();
         if (i == -1) {
-            JOptionPane.showMessageDialog(null, "Favor... seleccione una docente");
+            JOptionPane.showMessageDialog(null, "Favor... seleccione un Empleado");
          
         } 
         else{

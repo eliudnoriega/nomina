@@ -211,7 +211,7 @@ public class Loguear_Usuario extends javax.swing.JFrame {
                MenuPrincipal form = new MenuPrincipal();
                 form.toFront();
                 form.setVisible(true);
-                        form.jMenu_usuario.setEnabled(false);
+//                        form.jMenu_usuario.setEnabled(false);
                 }
                   if (!tablalistado.getValueAt(0, 3).toString().equals("Empleado")) {
                        this.dispose();
@@ -279,7 +279,7 @@ System.exit(0);
                MenuPrincipal form = new MenuPrincipal();
                 form.toFront();
                 form.setVisible(true);
-                        form.jMenu_usuario.setEnabled(false);
+//                        form.jMenu_usuario.setEnabled(false);
                 }
                   if (!tablalistado.getValueAt(0, 3).toString().equals("Empleado")) {
                        this.dispose();
