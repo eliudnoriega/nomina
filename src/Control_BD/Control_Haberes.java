@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class Control_Haberes {
         DefaultTableModel modelo;
     //vector con los titulos de cada columna
-    String[] titulosColumnas = {"ID_HAB", "NOMBRE_HAB"};
+    String[] titulosColumnas = {"ID_HABER", "NOMBRE_HABER"};
     //matriz donde se almacena los datos de cada celda de la tabla
     String info[][] = {};
     // Conectar Base de Datos
@@ -68,7 +68,7 @@ public class Control_Haberes {
                               int haberes=0;
                               
                            while(rs.next()){
-                            haberes = rs.getInt("ID_HAB");    
+                            haberes = rs.getInt("ID_HABER");    
                            }
                                   
                                 BD_HAB_DES.AgregarHaberes.idHaber=haberes;
@@ -102,7 +102,7 @@ public class Control_Haberes {
                               int haberes=0;
                               
                            while(rs.next()){
-                            cbox_HAB.addItem(rs.getString("NOMBRE_HAB")); 
+                            cbox_HAB.addItem(rs.getString("NOMBRE_HABER")); 
                           
                            }
                                   
@@ -133,11 +133,10 @@ public class Control_Haberes {
    try {
 
             // Llamada al procedimiento almacenado
-            CallableStatement cst = reg.prepareCall("{call insertar_haberes  (?,?)}");
+            CallableStatement cst = reg.prepareCall("{call insertar_haberes  (?)}");
      
                 // enviar parametros
-            cst.setInt(1, ID_HAB);
-            cst.setString(2,NOMBRE_HAB);
+            cst.setString(1,NOMBRE_HAB);
 
             
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado

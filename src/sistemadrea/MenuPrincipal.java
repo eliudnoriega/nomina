@@ -69,6 +69,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu_planilla = new javax.swing.JMenu();
         jMenuItem_add_haberes = new javax.swing.JMenuItem();
         jMenuItem_add_descuentos = new javax.swing.JMenuItem();
+        jMenuItem_add_descuentos1 = new javax.swing.JMenuItem();
         jMenu_usuario = new javax.swing.JMenu();
         jMenuItem_Agregaruser = new javax.swing.JMenuItem();
         jMenuItem_listarUser = new javax.swing.JMenuItem();
@@ -193,6 +194,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu_planilla.add(jMenuItem_add_descuentos);
+
+        jMenuItem_add_descuentos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItem_add_descuentos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/order-192.png"))); // NOI18N
+        jMenuItem_add_descuentos1.setText("Agregar Haberes y Descuentos");
+        jMenuItem_add_descuentos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_add_descuentos1ActionPerformed(evt);
+            }
+        });
+        jMenu_planilla.add(jMenuItem_add_descuentos1);
 
         jMenu_basedatos.add(jMenu_planilla);
 
@@ -408,6 +419,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         new AgregarDepartamento(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem_add_estabActionPerformed
 
+    private void jMenuItem_add_descuentos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_add_descuentos1ActionPerformed
+        // TODO add your handling code here:
+        new Agregar_hab_des(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_add_descuentos1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -453,6 +469,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_Agregaruser;
     private javax.swing.JMenuItem jMenuItem_acercade;
     private javax.swing.JMenuItem jMenuItem_add_descuentos;
+    private javax.swing.JMenuItem jMenuItem_add_descuentos1;
     private javax.swing.JMenuItem jMenuItem_add_doc;
     private javax.swing.JMenuItem jMenuItem_add_estab;
     private javax.swing.JMenuItem jMenuItem_add_haberes;
@@ -462,7 +479,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_mod_doc;
     private javax.swing.JMenuItem jMenuItem_mod_esta;
     private javax.swing.JMenuItem jMenuItem_por_mes;
-    private javax.swing.JMenu jMenu_basedatos;
+    public static javax.swing.JMenu jMenu_basedatos;
     private javax.swing.JMenu jMenu_docente;
     private javax.swing.JMenu jMenu_establecimiento;
     private javax.swing.JMenu jMenu_fecha_repor;
@@ -470,6 +487,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu_planilla;
     private javax.swing.JMenu jMenu_planilla1;
     private javax.swing.JMenu jMenu_reportes;
-    private javax.swing.JMenu jMenu_usuario;
+    public static javax.swing.JMenu jMenu_usuario;
     // End of variables declaration//GEN-END:variables
 }

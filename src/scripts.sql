@@ -81,6 +81,18 @@ SELECT * FROM t_empleado WHERE NOMBRE LIKE parametro OR PRIMER_APE LIKE parametr
 CREATE DEFINER=`root`@`localhost` PROCEDURE `empleado_buscar_dni` ()  NO SQL
 SELECT * FROM t_empleado WHERE DNI_EMP = parametro$$
 
+-- Procedimientos para la tabla haberes
+CREATE DEFINER=`root`@`localhost` PROCEDURE `haberes_buscar` (IN `parametro` VARCHAR(50))  NO SQL
+SELECT a.ID_HABER, a.NOMBRE_HABER FROM t_haberes a WHERE a.NOMBRE_HABER LIKE parametro$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_haberes` (IN `SNOMBRE_HABER` CHAR(20))  NO SQL
+BEGIN
+
+INSERT INTO t_haberes ( NOMBRE_HABER ) VALUES( SNOMBRE_HABER );
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_haberes` ()  NO SQL
+SELECT a.ID_HABER, a.NOMBRE_HABER FROM t_haberes a$$
 
 DELIMITER ;
 
@@ -110,6 +122,19 @@ CREATE TABLE `t_planilla` (
   `FECHA_FIN` DATE DEFAULT NULL,
   PRIMARY KEY (ID_PLANILLA)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_planilla`
+--
+
+CREATE TABLE `t_haberes` (
+  `ID_HABER` int(10) NOT NULL AUTO_INCREMENT,
+  `NOMBRE_HABER` char(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (ID_HABER)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 
 
 
