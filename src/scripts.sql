@@ -8,9 +8,6 @@
 -- Versión de PHP: 7.1.7
 -- use mysql;
 
--- Abner 13
-update user set password='root' where User='root';
-flush privileges;
 
 CREATE DATABASE nomina;
 
