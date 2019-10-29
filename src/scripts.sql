@@ -8,9 +8,6 @@
 -- Versión de PHP: 7.1.7
 -- use mysql;
 
--- Abner 13
-update user set password='root' where User='root';
-flush privileges;
 
 CREATE DATABASE nomina;
 
@@ -93,6 +90,12 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_haberes` ()  NO SQL
 SELECT a.ID_HABER, a.NOMBRE_HABER FROM t_haberes a$$
+-- ------------- PROCEDIMIENTO DE DESCUENTOS
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_descuentos` ()  NO SQL
+SELECT * from t_descuentos$$
+
 
 DELIMITER ;
 
@@ -156,7 +159,46 @@ ALTER TABLE `t_empleado`
   ADD KEY `ID_DEPARTAMENTO` (`ID_DEPARTAMENTO`);
 
 -- --------------------------------------------------------
+-- INICIO TABLA DESCUENTO 
 
+ CREATE TABLE `t_descuentos` (
+  `ID_DES` int(10) NOT NULL,
+  `NOMBRE_DESC` char(8) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+ INSERT INTO `t_descuentos` (`ID_DES`, `NOMBRE_DESC`) VALUES
+(1, 'N20530'),
+(2, 'ONP'),
+(3, 'IPssvida'),
+(4, 'Admin'),
+(5, 'Magist'),
+(6, 'Varios'),
+(7, 'Capyup'),
+(8, 'Judicial'),
+(9, 'DL26897'),
+(10, 'Zapateri'),
+(11, 'Responsa'),
+(12, 'Sesdis'),
+(13, 'Bazares'),
+(14, 'Multas'),
+(15, 'Bmater'),
+(16, 'Derese'),
+(17, 'Subcafae'),
+(18, 'Dea'),
+(19, 'Sanpedro'),
+(20, 'Ancije'),
+(21, 'Sutage'),
+(22, 'Rimacse'),
+(23, 'Editoria'),
+(24, 'Aceade'),
+(25, 'Cafaecus'),
+(26, 'CMunAreq'),
+(27, 'Credinka'),
+(28, 'Cmunicip'),
+(29, 'PagosInd'),
+(30, 'Reintegr');
+
+-- ------ FIN DE TABLA DESCUENTO
 --
 -- Estructura de tabla para la tabla `t_usuario`
 --

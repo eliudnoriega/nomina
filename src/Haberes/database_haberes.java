@@ -6,9 +6,9 @@ import java.sql.*;
  */
 public class database_haberes {
  /* DATOS PARA LA CONEXION */
-  private String bd = "tusolutionweb";//BASE DE DATOS
+  private String bd = "nomina";//BASE DE DATOS
   private String login = "root"; //USUARIO
-  private String password = ""; //CONTRASEÑA
+  private String password = "Wallpaper1@@@"; //CONTRASEÑA
   private String url = "jdbc:mysql://localhost/"+bd;
   private Connection conn = null;
   String dni,fecha;
