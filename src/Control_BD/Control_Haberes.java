@@ -31,19 +31,7 @@ public class Control_Haberes {
     Statement sentencia = null;
     ResultSet resultado = null;
     PreparedStatement ps = null;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
            public void CargarGEThaber(){
          
          modelo = new DefaultTableModel(info, titulosColumnas) {

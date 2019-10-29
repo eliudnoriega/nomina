@@ -8,5 +8,4 @@ public class Main_haberes {
     public static void main(String[] args) {
         new interfaz_haberes().setVisible(true);
     }
-
 }
