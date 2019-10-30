@@ -123,7 +123,7 @@ CREATE TABLE `t_planilla` (
   `COD_PLANILLA` char(8) COLLATE utf8_spanish_ci DEFAULT NULL,
   `FECHA_INICIO` DATE DEFAULT NULL,
   `FECHA_FIN` DATE DEFAULT NULL,
-  PRIMARY KEY (ID_PLANILLA)
+    PRIMARY KEY (ID_PLANILLA)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -138,7 +138,19 @@ CREATE TABLE `t_haberes` (
   PRIMARY KEY (ID_HABER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `t_emp_hab`
+--
+CREATE TABLE `t_emp_hab` (
+  `ID_EMP_HAB` int(10) NOT NULL AUTO_INCREMENT,
+  `DNI_EMP` char(8) COLLATE utf8_spanish_ci NOT NULL,
+  `ID_HAB` int(10) NOT NULL,
+  `FECHA` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `MONTO_HAB` decimal(8,2) DEFAULT NULL,
+    PRIMARY KEY (ID_EMP_HAB)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 -- -------------------------------------------------------
