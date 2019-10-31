@@ -45,8 +45,8 @@ public class database_haberes {
         //44231255
      int registros = 0;   
      //SELECT t_haberes.ID_HAB,t_haberes.NOMBRE_HAB,t_doc_hab.MONTO_HAB,t_docente.NOMBRE , t_docente.AP_PATERNO,t_docente.AP_MATERNO FROM t_haberes INNER JOIN t_doc_hab ON t_haberes.ID_HAB = t_doc_hab.ID_HAB INNER JOIN t_docente ON t_doc_hab.DNI_DOC=t_docente.DNI_DOC
-        String consulta = "SELECT t_doc_hab.ID_EMP_HAB,t_emp_hab.DNI_emp,t_haberes.ID_HABER,t_haberes.NOMBRE_HABER,t_doc_hab.MONTO_HAB,t_empleado.NOMBRE FROM t_haberes INNER JOIN t_emp_hab ON t_haberes.ID_HABER = t_emp_hab.ID_HAB INNER JOIN t_empleado ON t_emp_hab.DNI_EMP=t_empleado.DNI_EMP "
-                + "WHERE t_docente.DNI_emp='"+dni+"' and FECHA='"+fecha+"'" ;
+        String consulta = "SELECT t_emp_hab.ID_EMP_HAB,t_emp_hab.DNI_emp,t_haberes.ID_HABER,t_haberes.NOMBRE_HABER,t_emp_hab.MONTO_HAB,t_empleado.NOMBRE FROM t_haberes INNER JOIN t_emp_hab ON t_haberes.ID_HABER = t_emp_hab.ID_HAB INNER JOIN t_empleado ON t_emp_hab.DNI_EMP=t_empleado.DNI_EMP "
+                + "WHERE t_empleado.DNI_emp='"+dni+"' and FECHA='"+fecha+"'" ;
         
    //   String consulta = "Select p_id,p_nombre,p_apellido,p_edad FROM persona ";
       String consulta2 = "Select count(*) as total from t_haberes ";

@@ -168,6 +168,11 @@ String fecha="";
         cbox_HAB.setBackground(new java.awt.Color(0, 102, 255));
         cbox_HAB.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         cbox_HAB.setForeground(new java.awt.Color(255, 153, 0));
+        cbox_HAB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbox_HABActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -695,8 +700,9 @@ String fecha="";
         pack();
     }// </editor-fold>//GEN-END:initComponents
  private void llamarhaber(){
-     
-  
+     cargar_combo();
+     jDialogHaber.setModal(true);
+     jDialogHaber.setVisible(true);
         // llamada de datos
                 //Control_Reportes cc = new Control_Reportes();
  System.out.println("recibiendo "+iddocente);
@@ -713,7 +719,6 @@ String fecha="";
         Haberes_dialog.setTitle("Reporte.");
         //La hacemos visible.
         Haberes_dialog.setVisible(true);
-        cargar_combo();
 
  }
   private void llamardescuento(){
@@ -741,7 +746,7 @@ String fecha="";
  public void cargar_combo()
  {
         ConexionConBaseDatos conectar = new ConexionConBaseDatos();
-              Connection conexion = null;
+              Connection conexion = conectar.getConexion();;
     Statement sentencia = null;
     ResultSet resultado = null;
     PreparedStatement ps = null;
@@ -757,6 +762,7 @@ String fecha="";
 
 
         }
+        rs.close();
     } catch (SQLException ex) {
 
         JOptionPane.showMessageDialog(null,ex);
@@ -1009,6 +1015,10 @@ c.ejecutarGETdescuento();
     private void txt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fechaActionPerformed
+
+    private void cbox_HABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_HABActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbox_HABActionPerformed
     private TableRowSorter trsFiltro;
     public void filtro() {
         
