@@ -96,6 +96,15 @@ SELECT a.ID_HABER, a.NOMBRE_HABER FROM t_haberes a$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_descuentos` ()  NO SQL
 SELECT * from t_descuentos$$
 
+-- ------------- PROCEDIMIENTO DE TABLA EMPLEADO HABERES
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_emp_haberes` (IN `SID_EMP_HAB` INT(10), IN `SDNI_EMP` CHAR(8), IN `SID_HAB` INT(10), IN `SFECHA` VARCHAR(50), IN `SMONTO_HAB` DECIMAL(8,2))  NO SQL
+BEGIN
+
+INSERT INTO t_emp_hab (ID_EMP_HAB, DNI_EMP,ID_HAB,FECHA,MONTO_HAB) VALUES(SID_EMP_HAB, SDNI_EMP,SID_HAB,SFECHA,SMONTO_HAB);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_emp_hab` ()  NO SQL
+SELECT * FROM t_emp_hab$$
 
 DELIMITER ;
 

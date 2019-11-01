@@ -46,7 +46,7 @@ public class database_haberes {
      int registros = 0;   
      //SELECT t_haberes.ID_HAB,t_haberes.NOMBRE_HAB,t_doc_hab.MONTO_HAB,t_docente.NOMBRE , t_docente.AP_PATERNO,t_docente.AP_MATERNO FROM t_haberes INNER JOIN t_doc_hab ON t_haberes.ID_HAB = t_doc_hab.ID_HAB INNER JOIN t_docente ON t_doc_hab.DNI_DOC=t_docente.DNI_DOC
         String consulta = "SELECT t_emp_hab.ID_EMP_HAB,t_emp_hab.DNI_emp,t_haberes.ID_HABER,t_haberes.NOMBRE_HABER,t_emp_hab.MONTO_HAB,t_empleado.NOMBRE FROM t_haberes INNER JOIN t_emp_hab ON t_haberes.ID_HABER = t_emp_hab.ID_HAB INNER JOIN t_empleado ON t_emp_hab.DNI_EMP=t_empleado.DNI_EMP "
-                + "WHERE t_empleado.DNI_emp='"+dni+"' and FECHA='"+fecha+"'" ;
+                + "WHERE t_empleado.DNI_emp='"+dni+"' and FECHA LIKE '"+fecha+"%'" ;
         
    //   String consulta = "Select p_id,p_nombre,p_apellido,p_edad FROM persona ";
       String consulta2 = "Select count(*) as total from t_haberes ";
@@ -68,10 +68,10 @@ public class database_haberes {
          ResultSet res = pstm.executeQuery();
          int i = 0;
          while(res.next()){          
-             data[i][0] = res.getString( "ID_DOC_HAB" );
-             data[i][1] = res.getString( "DNI_DOC" );
-            data[i][2] = res.getString( "ID_HAB" );
-            data[i][3] = res.getString( "NOMBRE_HAB" );
+             data[i][0] = res.getString( "ID_EMP_HAB" );
+             data[i][1] = res.getString( "DNI_EMP" );
+            data[i][2] = res.getString( "ID_HABER" );
+            data[i][3] = res.getString( "NOMBRE_HABER" );
             data[i][4] = res.getString( "MONTO_HAB" );
             data[i][5] = res.getString( "NOMBRE" );
             i++;

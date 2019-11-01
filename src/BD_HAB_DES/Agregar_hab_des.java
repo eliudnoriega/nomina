@@ -3,6 +3,7 @@ package BD_HAB_DES;
 
 import static BD_Reportes.ConsultarReporte.jtablahaber;
 import Control_BD.*;
+import Util.Combo;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -27,6 +28,9 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 import java.awt.event.KeyAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -34,6 +38,7 @@ import java.awt.event.KeyAdapter;
  */
 public class Agregar_hab_des extends javax.swing.JDialog {
 String iddocente="";
+String dniDocente="";
 String fecha="";
  static public int idHaber_doc=0;
   static public int idDescu_doc=0;
@@ -181,6 +186,11 @@ String fecha="";
         jTextFieldFecha.setBackground(new java.awt.Color(0, 102, 153));
         jTextFieldFecha.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         jTextFieldFecha.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFechaActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -395,6 +405,11 @@ String fecha="";
         label_nombre_dialog.setForeground(new java.awt.Color(0, 0, 204));
 
         jButton1.setText("AGREGAR HABERES");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Haberes_dialogLayout = new javax.swing.GroupLayout(Haberes_dialog.getContentPane());
         Haberes_dialog.getContentPane().setLayout(Haberes_dialogLayout);
@@ -700,9 +715,6 @@ String fecha="";
         pack();
     }// </editor-fold>//GEN-END:initComponents
  private void llamarhaber(){
-     cargar_combo();
-     jDialogHaber.setModal(true);
-     jDialogHaber.setVisible(true);
         // llamada de datos
                 //Control_Reportes cc = new Control_Reportes();
  System.out.println("recibiendo "+iddocente);
@@ -750,18 +762,34 @@ String fecha="";
     Statement sentencia = null;
     ResultSet resultado = null;
     PreparedStatement ps = null;
-    
+    List<Combo> resp = new ArrayList();
+    DefaultComboBoxModel newModel = new DefaultComboBoxModel();
+    jTextFieldDni.setText(dniDocente);
          try {
-        jComboBox_Haber.removeAllItems();
+        cbox_HAB.removeAllItems();
   
         Statement st=conexion.createStatement();
-        ResultSet rs=st.executeQuery("Select * from t_haberes");
+        ResultSet rs=st.executeQuery("Select id_haber, nombre_haber from t_haberes");
         while(rs.next())
         {                
-            jComboBox_Haber.addItem(rs.getString(""));
+            String CODIGO = rs.getString("id_haber");
+                String NOMBRE = rs.getString("nombre_haber");
+
+//                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla=
+//                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla;
+                //crea un vector donde los está la informacion (se crea una fila)
+                Object[] info = {CODIGO, NOMBRE};
+
+                //al modelo de la tabla le agrega una fila
+                //con los datos que están en info
+                resp.add(new Combo(CODIGO, NOMBRE));
 
 
         }
+        for (Combo ob : resp) {
+            newModel.addElement(ob);
+        }
+        cbox_HAB.setModel(newModel);
         rs.close();
     } catch (SQLException ex) {
 
@@ -775,6 +803,7 @@ String fecha="";
 
        
         iddocente=(jTableListarDocente.getValueAt(fila, 0).toString());
+        dniDocente=(jTableListarDocente.getValueAt(fila, 0).toString());
        jLabel_docente.setText(jTableListarDocente.getValueAt(fila, 0).toString());
      label_nombre_dialog1.setText(jTableListarDocente.getValueAt(fila, 5).toString()+"  "+jTableListarDocente.getValueAt(fila, 6).toString()+"  "+jTableListarDocente.getValueAt(fila, 7).toString());
 label_nombre_dialog.setText(jTableListarDocente.getValueAt(fila, 5).toString()+"  "+jTableListarDocente.getValueAt(fila, 6).toString()+"  "+jTableListarDocente.getValueAt(fila, 7).toString());
@@ -828,6 +857,7 @@ c.ejecutarGEThaber();
             JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(this,"Registrado CORRECTAMENTE","Registrado",JOptionPane.PLAIN_MESSAGE);
    jDialogHaber.dispose();
+   Haberes_dialog.dispose();
             
 
 
@@ -890,33 +920,7 @@ c.ejecutarGETdescuento();
             else
             {
 
-                Actualizar_Tabla_haberes();
-                //oculta columna ID
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(1);
-                jTable1.getColumnModel().getColumn(1).setMinWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(1).setMinWidth(1);
-                jTable1.getColumnModel().getColumn(0).setMaxWidth(1);
-                jTable1.getColumnModel().getColumn(0).setMinWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(1);
-                jTable1.getColumnModel().getColumn(2).setMaxWidth(1);
-                jTable1.getColumnModel().getColumn(2).setMinWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(2).setMinWidth(1);
-
-                jTable1.getColumnModel().getColumn(5).setMaxWidth(1);
-                jTable1.getColumnModel().getColumn(5).setMinWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(5).setMaxWidth(1);
-                jTable1.getTableHeader().getColumnModel().getColumn(5).setMinWidth(1);
-
-                //editor de caldas
-                jTable1.getColumnModel().getColumn( 0 ).setCellEditor(new MyTableCellEditor_haberes(db,"id_hab_des"));
-                jTable1.getColumnModel().getColumn( 1 ).setCellEditor(new MyTableCellEditor_haberes(db,"DNI_DOC"));
-                jTable1.getColumnModel().getColumn( 2 ).setCellEditor(new MyTableCellEditor_haberes(db,"ID_HAB"));//Columna Nombre
-                jTable1.getColumnModel().getColumn( 3 ).setCellEditor(new MyTableCellEditor_haberes(db,"NOMBRE_HAB"));//Columna Apellido
-                jTable1.getColumnModel().getColumn( 4 ).setCellEditor(new MyTableCellEditor_haberes(db,"MONTO_HAB"));//Columna Edad
-                jTable1.getColumnModel().getColumn( 5 ).setCellEditor(new MyTableCellEditor_haberes(db,"NOMBRE"));//Columna Edad
+                llenarTable1();
                 //        jTable1.getColumnModel().getColumn( 6 ).setCellEditor(new MyTableCellEditor_haberes(db,"AP_MATERNO"));
 
                 //Control_Docente change = new Control_Empleado();
@@ -1019,6 +1023,17 @@ c.ejecutarGETdescuento();
     private void cbox_HABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_HABActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbox_HABActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        cargar_combo();
+     jDialogHaber.setModal(true);
+     jDialogHaber.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextFieldFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFechaActionPerformed
     private TableRowSorter trsFiltro;
     public void filtro() {
         
@@ -1036,7 +1051,7 @@ c.ejecutarGETdescuento();
     }
      private void Actualizar_Tabla_haberes(){
         //actualiza los datos de la tabla realizando una consulta a la base de datos
-        String[] columNames = {"id_hab_des" ,"DNI_DOC","ID_HAB","HABERES","MONTO","NOMBRE"};  
+        String[] columNames = {"id_hab_des" ,"DNI_EMP","ID_HAB","HABERES","MONTO","NOMBRE"};  
         String a = txt_fecha.getText()+'0'+(jComboBoxMes.getSelectedIndex()+1);
         db.EnviarDatos(iddocente, a);
         dtPersona = db.Select_Persona();
@@ -1070,6 +1085,37 @@ jTable1.getColumnModel().getColumn( 5 ).setCellEditor(new MyTableCellEditor_habe
 //        jTable1.getColumnModel().getColumn( 6 ).setCellEditor(new MyTableCellEditor_haberes(db,"AP_MATERNO"));
 
 }
+
+private void llenarTable1(){
+    Actualizar_Tabla_haberes();
+                //oculta columna ID
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(1);
+                jTable1.getColumnModel().getColumn(1).setMinWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(1).setMinWidth(1);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(1);
+                jTable1.getColumnModel().getColumn(0).setMinWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(1);
+                jTable1.getColumnModel().getColumn(2).setMaxWidth(1);
+                jTable1.getColumnModel().getColumn(2).setMinWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(2).setMinWidth(1);
+
+                jTable1.getColumnModel().getColumn(5).setMaxWidth(1);
+                jTable1.getColumnModel().getColumn(5).setMinWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(5).setMaxWidth(1);
+                jTable1.getTableHeader().getColumnModel().getColumn(5).setMinWidth(1);
+
+                //editor de caldas
+                jTable1.getColumnModel().getColumn( 0 ).setCellEditor(new MyTableCellEditor_haberes(db,"id_hab_des"));
+                jTable1.getColumnModel().getColumn( 1 ).setCellEditor(new MyTableCellEditor_haberes(db,"DNI_DOC"));
+                jTable1.getColumnModel().getColumn( 2 ).setCellEditor(new MyTableCellEditor_haberes(db,"ID_HAB"));//Columna Nombre
+                jTable1.getColumnModel().getColumn( 3 ).setCellEditor(new MyTableCellEditor_haberes(db,"NOMBRE_HAB"));//Columna Apellido
+                jTable1.getColumnModel().getColumn( 4 ).setCellEditor(new MyTableCellEditor_haberes(db,"MONTO_HAB"));//Columna Edad
+                jTable1.getColumnModel().getColumn( 5 ).setCellEditor(new MyTableCellEditor_haberes(db,"NOMBRE"));//Columna Edad
+}
+
     /**
      * @param args the command line arguments
      */

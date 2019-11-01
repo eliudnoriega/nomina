@@ -63,12 +63,12 @@ public class Control_Doc_haberes {
                            try{
                                 // creamos la Conexion
                                  conexion.setAutoCommit(false);
-                                CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call lista_doc_hab()}");
+                                CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call lista_emp_hab()}");
                               rs=prcProcedimientoAlmacenado.executeQuery();
                               int haberes=0;
                               
                            while(rs.next()){
-                            haberes = rs.getInt("ID_DOC_HAB");    
+                            haberes = rs.getInt("ID_EMP_HAB");    
                            }
                                   
                                 BD_HAB_DES.Agregar_hab_des.idHaber_doc=haberes;
@@ -98,7 +98,7 @@ public class Control_Doc_haberes {
          Connection reg = ConexionConBaseDatos.getConexion();      
    try {
           // Llamada al procedimiento almacenado
-            CallableStatement cst = reg.prepareCall("{call insertar_doc_haberes  (?,?,?,?,?)}");
+            CallableStatement cst = reg.prepareCall("{call insertar_emp_haberes  (?,?,?,?,?)}");
                 // enviar parametros
             cst.setInt(1, ID_DOC_HAB);
             cst.setString(2,DNI_DOC);
