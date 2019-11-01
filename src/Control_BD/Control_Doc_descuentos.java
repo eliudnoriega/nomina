@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class Control_Doc_descuentos {
               DefaultTableModel modelo;
     //vector con los titulos de cada columna
-    String[] titulosColumnas = {"ID_DOC_DESC", "DNI_DOC","ID_DES","FECHA","MONTO_DES"};
+    String[] titulosColumnas = {"ID_EMP_DESC", "DNI_EMP","ID_DES","FECHA","MONTO_DES"};
     //matriz donde se almacena los datos de cada celda de la tabla
     String info[][] = {};
     // Conectar Base de Datos
@@ -62,12 +62,12 @@ public class Control_Doc_descuentos {
                            try{
                                 // creamos la Conexion
                                  conexion.setAutoCommit(false);
-                                CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call lista_doc_des()}");
+                                CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call lista_emp_des()}");
                               rs=prcProcedimientoAlmacenado.executeQuery();
                               int descuentos=0;
                               
                            while(rs.next()){
-                            descuentos = rs.getInt("ID_DOC_DESC");    
+                            descuentos = rs.getInt("ID_EMP_DESC");    
                            }
                                   
                                 BD_HAB_DES.Agregar_hab_des.idDescu_doc=descuentos;
@@ -99,7 +99,7 @@ public class Control_Doc_descuentos {
    try {
 
             // Llamada al procedimiento almacenado
-            CallableStatement cst = reg.prepareCall("{call insertar_doc_descuento  (?,?,?,?,?)}");
+            CallableStatement cst = reg.prepareCall("{call insertar_emp_descuento  (?,?,?,?,?)}");
      
                 // enviar parametros
             cst.setInt(1, ID_DOC_DESC);

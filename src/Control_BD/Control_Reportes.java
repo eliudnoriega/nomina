@@ -139,8 +139,8 @@ public class Control_Reportes {
                 double MONTO_DES = rs.getDouble("MONTO_DES");
                      total=total+MONTO_DES;
      String NOMBRE = rs.getString("NOMBRE");
-       String AP_PATERNO = rs.getString("AP_PATERNO");
-       String AP_MATERNO = rs.getString("AP_MATERNO");
+       String AP_PATERNO = rs.getString("PRIMER_APE");
+       String AP_MATERNO = rs.getString("SEGUNDO_APE");
                                ConsultarReporte.nombre_docente=NOMBRE+" "+AP_PATERNO+" "+AP_MATERNO;
                 Object[] info = {NOMBRE_DESC, MONTO_DES};
                 //al modelo de la tabla le agrega una fila
@@ -212,12 +212,12 @@ public class Control_Reportes {
                               rs=prcProcedimientoAlmacenado.executeQuery();
                            while(rs.next()){
                         // int ID_HAB = rs.getInt("ID_HAB");     
-                         String NOMBRE_HAB = rs.getString("NOMBRE_HAB");
+                         String NOMBRE_HAB = rs.getString("NOMBRE_HABER");
                 double MONTO_HAB = rs.getDouble("MONTO_HAB");
                 total=total+MONTO_HAB;
                   String NOMBRE = rs.getString("NOMBRE");
-       String AP_PATERNO = rs.getString("AP_PATERNO");
-       String AP_MATERNO = rs.getString("AP_MATERNO");
+       String AP_PATERNO = rs.getString("PRIMER_APE");
+       String AP_MATERNO = rs.getString("SEGUNDO_APE");
                                ConsultarReporte.nombre_docente=NOMBRE+" "+AP_PATERNO+" "+AP_MATERNO;
                             
                 Object[] info = {NOMBRE_HAB, MONTO_HAB};
@@ -280,7 +280,7 @@ public class Control_Reportes {
                               
                            while(rs.next()){
                          String FECHA = rs.getString("FECHA");
-                String DNI_DOCENTE = rs.getString("DNI_DOCENTE");
+                String DNI_DOCENTE = rs.getString("DNI_EMPLEADO");
                 String NOMBRE = rs.getString("NOMBRE");
                 String AP_PATERNO = rs.getString("AP_PATERNO");
                  String AP_MATERNO = rs.getString("AP_MATERNO");
@@ -341,7 +341,7 @@ public class Control_Reportes {
             conexion = ConexionConBaseDatos.getConexion(); ResultSet rs; 
    try {
             conexion.setAutoCommit(false);            // Llamada al procedimiento almacenado
-            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call reporte_buscar_por_docente(?)}");
+            CallableStatement prcProcedimientoAlmacenado = conexion.prepareCall("{call reporte_buscar_por_empleado(?)}");
             prcProcedimientoAlmacenado.setString(1,parametroBusqueda);// Parametro 1 del procedimiento almacenado
             rs=prcProcedimientoAlmacenado.executeQuery();
                            while(rs.next()){// Definimos los tipos de los parametros de salida 

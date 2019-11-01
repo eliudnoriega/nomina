@@ -49,7 +49,7 @@ public class database_haberes {
                 + "WHERE t_empleado.DNI_emp='"+dni+"' and FECHA LIKE '"+fecha+"%'" ;
         
    //   String consulta = "Select p_id,p_nombre,p_apellido,p_edad FROM persona ";
-      String consulta2 = "Select count(*) as total from t_haberes ";
+      String consulta2 = "Select count(*) as total from t_emp_hab where dni_emp="+dni;
       //obtenemos la cantidad de registros existentes en la tabla
       try{
          PreparedStatement pstm = conn.prepareStatement( consulta2 );

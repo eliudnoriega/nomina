@@ -96,6 +96,21 @@ SELECT a.ID_HABER, a.NOMBRE_HABER FROM t_haberes a$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_descuentos` ()  NO SQL
 SELECT * from t_descuentos$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_descuentos` (IN `SID_DES` INT(10), IN `SNOMBRE_DESC` VARCHAR(50))  NO SQL
+BEGIN
+
+INSERT INTO t_descuentos (ID_DES, NOMBRE_DESC) VALUES(SID_DES, SNOMBRE_DESC);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_emp_des` ()  NO SQL
+SELECT * FROM t_emp_desc$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_emp_descuento` (IN `SID_EMP_DESC` INT(10), IN `SDNI_EMP` CHAR(8), IN `SID_DES` INT(10), IN `SFECHA` VARCHAR(50), IN `SMONTO_DES` DECIMAL(8,2))  NO SQL
+BEGIN
+
+INSERT INTO t_emp_desc (ID_EMP_DESC, DNI_EMP,ID_DES,FECHA,MONTO_DES) VALUES(SID_EMP_DESC, SDNI_EMP,SID_DES,SFECHA,SMONTO_DES);
+END$$
+
 -- ------------- PROCEDIMIENTO DE TABLA EMPLEADO HABERES
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_emp_haberes` (IN `SID_EMP_HAB` INT(10), IN `SDNI_EMP` CHAR(8), IN `SID_HAB` INT(10), IN `SFECHA` VARCHAR(50), IN `SMONTO_HAB` DECIMAL(8,2))  NO SQL
 BEGIN
@@ -105,6 +120,15 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lista_emp_hab` ()  NO SQL
 SELECT * FROM t_emp_hab$$
+
+-- procesos para reportes
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reporte_buscar_hab` (IN `anio` VARCHAR(10), IN `mes` VARCHAR(10), IN `dni` VARCHAR(8))  NO SQL
+SELECT t_haberes.ID_HABER,t_haberes.NOMBRE_HABER,t_emp_hab.MONTO_HAB,t_empleado.NOMBRE , t_empleado.PRIMER_APE,t_empleado.SEGUNDO_APE FROM t_haberes INNER JOIN t_emp_hab ON t_haberes.ID_HABER = t_emp_hab.ID_HAB INNER JOIN t_empleado ON t_emp_hab.DNI_EMP=t_empleado.DNI_EMP WHERE LEFT(RIGHT((t_emp_hab.FECHA),4),2)=mes
+ AND LEFT((t_emp_hab.FECHA),4)=anio AND t_empleado.DNI_EMP=dni$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reporte_buscar_descuento` (IN `anio` VARCHAR(10), IN `mes` VARCHAR(10), IN `dni` VARCHAR(8))  NO SQL
+SELECT t_descuentos.ID_DES,t_descuentos.NOMBRE_DESC,t_emp_desc.MONTO_DES,t_empleado.NOMBRE , t_empleado.PRIMER_APE,t_empleado.SEGUNDO_APE FROM t_descuentos INNER JOIN t_emp_desc ON t_descuentos.ID_DES = t_emp_desc.ID_EMP_DESC INNER JOIN t_empleado ON t_emp_desc.DNI_EMP=t_empleado.DNI_EMP WHERE LEFT(RIGHT((t_emp_desc.FECHA),4),2)=mes AND LEFT((t_emp_desc.FECHA),4)=anio AND t_empleado.DNI_EMP=dni$$
 
 DELIMITER ;
 
@@ -183,8 +207,9 @@ ALTER TABLE `t_empleado`
 -- INICIO TABLA DESCUENTO 
 
  CREATE TABLE `t_descuentos` (
-  `ID_DES` int(10) NOT NULL,
-  `NOMBRE_DESC` char(8) COLLATE utf8_spanish_ci NOT NULL
+  `ID_DES` int(10) NOT NULL AUTO_INCREMENT,
+  `NOMBRE_DESC` char(8) COLLATE utf8_spanish_ci NOT NULL,
+    PRIMARY KEY (`ID_DES`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
  INSERT INTO `t_descuentos` (`ID_DES`, `NOMBRE_DESC`) VALUES
@@ -218,6 +243,21 @@ ALTER TABLE `t_empleado`
 (28, 'Cmunicip'),
 (29, 'PagosInd'),
 (30, 'Reintegr');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_emp_desc`
+--
+
+CREATE TABLE `t_emp_desc` (
+  `ID_EMP_DESC` int(10) NOT NULL AUTO_INCREMENT,
+  `DNI_EMP` char(8) COLLATE utf8_spanish_ci NOT NULL,
+  `ID_DES` int(10) NOT NULL,
+  `FECHA` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `MONTO_DES` decimal(8,2) DEFAULT NULL,
+   PRIMARY KEY(`ID_EMP_DESC`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- ------ FIN DE TABLA DESCUENTO
 --

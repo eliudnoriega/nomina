@@ -115,11 +115,11 @@ String fecha="";
         jTable1 = new javax.swing.JTable();
         label_nombre_dialog = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jComboBox_Haber = new javax.swing.JComboBox<>();
         Descuentos_dialog = new javax.swing.JDialog();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableDescuentos = new javax.swing.JTable();
         label_nombre_dialog1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListarDocente = new javax.swing.JTable();
@@ -168,7 +168,7 @@ String fecha="";
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel16.setText("Asignar Haberes a Docente");
+        jLabel16.setText("Asignar Haberes a Empleado");
 
         cbox_HAB.setBackground(new java.awt.Color(0, 102, 255));
         cbox_HAB.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
@@ -186,6 +186,7 @@ String fecha="";
         jTextFieldFecha.setBackground(new java.awt.Color(0, 102, 153));
         jTextFieldFecha.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         jTextFieldFecha.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldFecha.setText("yyyyMMdd");
         jTextFieldFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFechaActionPerformed(evt);
@@ -227,7 +228,7 @@ String fecha="";
                             .addComponent(cbox_HAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnRegistrarHaber)
@@ -292,7 +293,7 @@ String fecha="";
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel17.setText("Asignar Descuentos a Docente");
+        jLabel17.setText("Asignar Descuentos a Empleado");
 
         cbox_DESC.setBackground(new java.awt.Color(0, 102, 255));
         cbox_DESC.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
@@ -310,6 +311,7 @@ String fecha="";
         jTextFieldFecha_des.setBackground(new java.awt.Color(0, 102, 153));
         jTextFieldFecha_des.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         jTextFieldFecha_des.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldFecha_des.setText("yyyyMMdd");
 
         jLabel12.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -346,7 +348,7 @@ String fecha="";
                             .addComponent(cbox_DESC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldDni_desc, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldFecha_des, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnRegistrarDesc)
@@ -423,13 +425,11 @@ String fecha="";
                 .addGroup(Haberes_dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Haberes_dialogLayout.createSequentialGroup()
                         .addGap(168, 168, 168)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox_Haber, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1))
                     .addGroup(Haberes_dialogLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         Haberes_dialogLayout.setVerticalGroup(
             Haberes_dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,9 +437,7 @@ String fecha="";
                 .addContainerGap()
                 .addComponent(label_nombre_dialog, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addGroup(Haberes_dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jComboBox_Haber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -465,6 +463,13 @@ String fecha="";
         label_nombre_dialog1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         label_nombre_dialog1.setForeground(new java.awt.Color(0, 0, 204));
 
+        jButton2.setText("AGREGAR DESCUENTOS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Descuentos_dialogLayout = new javax.swing.GroupLayout(Descuentos_dialog.getContentPane());
         Descuentos_dialog.getContentPane().setLayout(Descuentos_dialogLayout);
         Descuentos_dialogLayout.setHorizontalGroup(
@@ -472,24 +477,31 @@ String fecha="";
             .addGroup(Descuentos_dialogLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Descuentos_dialogLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(label_nombre_dialog1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(77, 77, 77))
         );
         Descuentos_dialogLayout.setVerticalGroup(
             Descuentos_dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Descuentos_dialogLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label_nombre_dialog1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGroup(Descuentos_dialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Descuentos_dialogLayout.createSequentialGroup()
+                        .addComponent(label_nombre_dialog1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Descuentos_dialogLayout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Modificar Docente");
+        setTitle("Modificar Empleado");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -532,7 +544,7 @@ String fecha="";
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Selecione Docente");
+        jLabel1.setText("Selecione Empleado");
 
         jButtonCancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonCancelar.setForeground(new java.awt.Color(204, 0, 0));
@@ -564,7 +576,7 @@ String fecha="";
 
         jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Id Docente");
+        jLabel9.setText("Id Empleado");
 
         txt_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -796,6 +808,47 @@ String fecha="";
         JOptionPane.showMessageDialog(null,ex);
     } 
  }
+ public void cargar_comboDescuentos()
+ {
+        ConexionConBaseDatos conectar = new ConexionConBaseDatos();
+              Connection conexion = conectar.getConexion();;
+    Statement sentencia = null;
+    ResultSet resultado = null;
+    PreparedStatement ps = null;
+    List<Combo> resp = new ArrayList();
+    DefaultComboBoxModel newModel = new DefaultComboBoxModel();
+    jTextFieldDni_desc.setText(dniDocente);
+         try {
+        cbox_DESC.removeAllItems();
+  
+        Statement st=conexion.createStatement();
+        ResultSet rs=st.executeQuery("Select id_des, nombre_desc from t_descuentos");
+        while(rs.next())
+        {                
+            String CODIGO = rs.getString("id_des");
+                String NOMBRE = rs.getString("nombre_desc");
+
+//                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla=
+//                BD_Planilla.AgregarPlanilla.ultimo_numero_id_planilla;
+                //crea un vector donde los está la informacion (se crea una fila)
+                Object[] info = {CODIGO, NOMBRE};
+
+                //al modelo de la tabla le agrega una fila
+                //con los datos que están en info
+                resp.add(new Combo(CODIGO, NOMBRE));
+
+
+        }
+        for (Combo ob : resp) {
+            newModel.addElement(ob);
+        }
+        cbox_DESC.setModel(newModel);
+        rs.close();
+    } catch (SQLException ex) {
+
+        JOptionPane.showMessageDialog(null,ex);
+    } 
+ }
     private void jTableListarDocenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListarDocenteMouseClicked
         // TODO add your handling code here:
         try {
@@ -819,7 +872,7 @@ label_nombre_dialog.setText(jTableListarDocente.getValueAt(fila, 5).toString()+"
 
      private void Actualizar_Tabla_descuentos(){
         //actualiza los datos de la tabla realizando una consulta a la base de datos
-        String[] columNames = {"t_doc_desc" ,"DNI_DOC","ID_DES","DESCUENTO","MONTO","NOMBRE"};  
+        String[] columNames = {"t_emp_desc" ,"DNI_EMP","ID_DES","DESCUENTO","MONTO","NOMBRE"};  
         String a = txt_fecha.getText()+'0'+(jComboBoxMes.getSelectedIndex()+1);
         db2.EnviarDatos(iddocente, a);
         dtPersona2 = db2.Select_Persona();
@@ -965,8 +1018,8 @@ c.ejecutarGETdescuento();
             jTableDescuentos.getTableHeader().getColumnModel().getColumn(5).setMinWidth(1);
 
             //editor de caldas
-            jTableDescuentos.getColumnModel().getColumn( 0 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"t_doc_desc"));
-            jTableDescuentos.getColumnModel().getColumn( 1 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"DNI_DOC"));
+            jTableDescuentos.getColumnModel().getColumn( 0 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"t_emp_desc"));
+            jTableDescuentos.getColumnModel().getColumn( 1 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"DNI_EMP"));
             jTableDescuentos.getColumnModel().getColumn( 2 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"ID_DES"));//Columna Nombre
             jTableDescuentos.getColumnModel().getColumn( 3 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"NOMBRE_DESC"));//Columna Apellido
             jTableDescuentos.getColumnModel().getColumn( 4 ).setCellEditor(new Descuentos.MyTableCellEditor_Descuentos(db2,"MONTO_DES"));//Columna Edad
@@ -1034,6 +1087,13 @@ c.ejecutarGETdescuento();
     private void jTextFieldFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFechaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+           cargar_comboDescuentos();
+     jDialogDescuento.setModal(true);
+     jDialogDescuento.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
     private TableRowSorter trsFiltro;
     public void filtro() {
         
@@ -1077,7 +1137,7 @@ public void llamar_main_haber(){
         jTable1.getTableHeader().getColumnModel().getColumn(2).setMinWidth(1);
         //editor de caldas
              jTable1.getColumnModel().getColumn( 0 ).setCellEditor(new MyTableCellEditor_haberes(db,"id_hab_des"));
-              jTable1.getColumnModel().getColumn( 1 ).setCellEditor(new MyTableCellEditor_haberes(db,"DNI_DOC"));
+              jTable1.getColumnModel().getColumn( 1 ).setCellEditor(new MyTableCellEditor_haberes(db,"DNI_EMP"));
         jTable1.getColumnModel().getColumn( 2 ).setCellEditor(new MyTableCellEditor_haberes(db,"ID_HAB"));//Columna Nombre
         jTable1.getColumnModel().getColumn( 3 ).setCellEditor(new MyTableCellEditor_haberes(db,"NOMBRE_HAB"));//Columna Apellido
         jTable1.getColumnModel().getColumn( 4 ).setCellEditor(new MyTableCellEditor_haberes(db,"MONTO_HAB"));//Columna Edad
@@ -1109,7 +1169,7 @@ private void llenarTable1(){
 
                 //editor de caldas
                 jTable1.getColumnModel().getColumn( 0 ).setCellEditor(new MyTableCellEditor_haberes(db,"id_hab_des"));
-                jTable1.getColumnModel().getColumn( 1 ).setCellEditor(new MyTableCellEditor_haberes(db,"DNI_DOC"));
+                jTable1.getColumnModel().getColumn( 1 ).setCellEditor(new MyTableCellEditor_haberes(db,"DNI_EMP"));
                 jTable1.getColumnModel().getColumn( 2 ).setCellEditor(new MyTableCellEditor_haberes(db,"ID_HAB"));//Columna Nombre
                 jTable1.getColumnModel().getColumn( 3 ).setCellEditor(new MyTableCellEditor_haberes(db,"NOMBRE_HAB"));//Columna Apellido
                 jTable1.getColumnModel().getColumn( 4 ).setCellEditor(new MyTableCellEditor_haberes(db,"MONTO_HAB"));//Columna Edad
@@ -1178,11 +1238,11 @@ private void llenarTable1(){
     public static javax.swing.JComboBox cbox_HAB;
     private javax.swing.JComboBox<String> combofiltro;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButton_AddDescuento;
     private javax.swing.JButton jButton_addHaberes;
     private javax.swing.JComboBox<String> jComboBoxMes;
-    private javax.swing.JComboBox<String> jComboBox_Haber;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDialog jDialogDescuento;
     private javax.swing.JDialog jDialogHaber;

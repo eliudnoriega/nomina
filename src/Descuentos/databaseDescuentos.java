@@ -1,4 +1,5 @@
 package Descuentos;
+import Control_BD.ConexionConBaseDatos;
 import java.sql.*;
 /**
 *  @web http://blog.jheysonmatta.com.pe/
@@ -22,15 +23,13 @@ public class databaseDescuentos {
    public databaseDescuentos(){
       try{
          //obtenemos el driver de para mysql
-         Class.forName("com.mysql.jdbc.Driver");
          //obtenemos la conexión
-         conn = DriverManager.getConnection(url,login,password);
+         conn = ConexionConBaseDatos.getConexion();
+         Statement comando = conn.createStatement();
          if (conn!=null){
             System.out.println("OK base de datos "+bd+" listo");
          }
       }catch(SQLException e){
-         System.out.println(e);
-      }catch(ClassNotFoundException e){
          System.out.println(e);
       }
     }
@@ -47,11 +46,11 @@ public class databaseDescuentos {
         //44231255
      int registros = 0;   
      //SELECT t_haberes.ID_HAB,t_haberes.NOMBRE_HAB,t_doc_hab.MONTO_HAB,t_docente.NOMBRE , t_docente.AP_PATERNO,t_docente.AP_MATERNO FROM t_haberes INNER JOIN t_doc_hab ON t_haberes.ID_HAB = t_doc_hab.ID_HAB INNER JOIN t_docente ON t_doc_hab.DNI_DOC=t_docente.DNI_DOC
-        String consulta = "SELECT t_doc_desc.ID_DOC_DESC,t_doc_desc.DNI_DOC,t_descuentos.ID_DES,t_descuentos.NOMBRE_DESC,t_doc_desc.MONTO_DES,t_docente.NOMBRE FROM t_descuentos INNER JOIN t_doc_desc ON t_descuentos.ID_DES = t_doc_desc.ID_DES INNER JOIN t_docente ON t_doc_desc.DNI_DOC=t_docente.DNI_DOC "
-                + "WHERE t_docente.DNI_DOC='"+dni+"' and FECHA='"+fecha+"'" ;
+        String consulta = "SELECT t_emp_desc.ID_EMP_DESC,t_emp_desc.DNI_EMP,t_descuentos.ID_DES,t_descuentos.NOMBRE_DESC,t_emp_desc.MONTO_DES,t_empleado.NOMBRE FROM t_descuentos INNER JOIN t_emp_desc ON t_descuentos.ID_DES = t_emp_desc.ID_DES INNER JOIN t_empleado ON t_emp_desc.DNI_EMP=t_empleado.DNI_EMP "
+                + "WHERE t_empleado.DNI_EMP='"+dni+"' and FECHA like '"+fecha+"%'" ;
         
    //   String consulta = "Select p_id,p_nombre,p_apellido,p_edad FROM persona ";
-      String consulta2 = "Select count(*) as total from t_descuentos ";
+      String consulta2 = "SELECT count(*) as total FROM t_emp_desc WHERE DNI_EMP="+dni;
       //obtenemos la cantidad de registros existentes en la tabla
       try{
          PreparedStatement pstm = conn.prepareStatement( consulta2 );
@@ -70,8 +69,8 @@ public class databaseDescuentos {
          ResultSet res = pstm.executeQuery();
          int i = 0;
          while(res.next()){          
-             data[i][0] = res.getString( "ID_DOC_DESC" );
-             data[i][1] = res.getString( "DNI_DOC" );
+             data[i][0] = res.getString( "ID_EMP_DESC" );
+             data[i][1] = res.getString( "DNI_EMP" );
             data[i][2] = res.getString( "ID_DES" );
             data[i][3] = res.getString( "NOMBRE_DESC" );
             data[i][4] = res.getString( "MONTO_DES" );
