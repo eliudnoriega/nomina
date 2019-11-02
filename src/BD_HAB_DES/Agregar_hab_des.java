@@ -947,6 +947,7 @@ c.ejecutarGETdescuento();
             JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(this,"Registrado CORRECTAMENTE","Registrado",JOptionPane.PLAIN_MESSAGE);
    jDialogDescuento.dispose();
+   Descuentos_dialog.dispose();
             
 
 
@@ -989,7 +990,11 @@ c.ejecutarGETdescuento();
 
     private void jButton_AddDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddDescuentoActionPerformed
         // TODO add your handling code here:
-        if(jLabel_docente.getText().equals("") ){
+        if (txt_fecha.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(rootPane, "Ingrese una fecha");
+        }
+        if(jLabel_docente.getText().equals("")){
 
             JOptionPane.showMessageDialog(rootPane, "Selecona un docente");
         }
